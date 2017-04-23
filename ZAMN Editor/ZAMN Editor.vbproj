@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E61B4C84-B446-43DB-A34E-F17EB246F87F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>ZAMNEditor.My.MyApplication</StartupObject>
+    <RootNamespace>ZAMNEditor</RootNamespace>
+    <AssemblyName>ZAMN Editor</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ZAMN Editor.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ZAMN Editor.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Secret.ICO</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddressUpDown.Designer.vb">
+      <DependentUpon>AddressUpDown.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AddressUpDown.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BossMonster.vb" />
+    <Compile Include="ByteArrayStream.vb" />
+    <Compile Include="ClearButton.Designer.vb">
+      <DependentUpon>ClearButton.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ClearButton.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DList.vb" />
+    <Compile Include="ErrorLog.vb" />
+    <Compile Include="ExpandPanel.Designer.vb">
+      <DependentUpon>ExpandPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ExpandPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IPSPatcher.vb" />
+    <Compile Include="Item.vb" />
+    <Compile Include="LevelGFX.vb" />
+    <Compile Include="LevelObj.vb" />
+    <Compile Include="LevelObjList.vb" />
+    <Compile Include="LevelSettings.Designer.vb">
+      <DependentUpon>LevelSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LevelSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LevelWriteData.vb" />
+    <Compile Include="LoadingLevel.Designer.vb">
+      <DependentUpon>LoadingLevel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LoadingLevel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LvlEdCtrl.Designer.vb">
+      <DependentUpon>LvlEdCtrl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LvlEdCtrl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Editor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editor.Designer.vb">
+      <DependentUpon>Editor.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Level.vb" />
+    <Compile Include="Monster.vb" />
+    <Compile Include="ObjectBrowsers\BMonsterBrowser.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\BMonsterProp.Designer.vb">
+      <DependentUpon>BMonsterProp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectBrowsers\BMonsterProp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\IPropCtrl.vb" />
+    <Compile Include="ObjectBrowsers\ItemBrowser.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ObjectBrowsers\ItemProp.Designer.vb">
+      <DependentUpon>ItemProp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectBrowsers\ItemProp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\MonsterBrowser.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NRMonster.vb" />
+    <Compile Include="ObjectBrowsers\MonsterProp.Designer.vb">
+      <DependentUpon>MonsterProp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectBrowsers\MonsterProp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\NRMBrowser.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\NRMProp.Designer.vb">
+      <DependentUpon>NRMProp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectBrowsers\NRMProp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\ObjectBrowser.Designer.vb">
+      <DependentUpon>ObjectBrowser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectBrowsers\ObjectBrowser.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\SpriteBrowser.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\TilesetBrowser.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\VictimBrowser.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ObjectBrowsers\VictimProp.Designer.vb">
+      <DependentUpon>VictimProp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectBrowsers\VictimProp.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PasswordEditor.Designer.vb">
+      <DependentUpon>PasswordEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pointers.vb" />
+    <Compile Include="RecentFilesList.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SaveMsgBox.Designer.vb">
+      <DependentUpon>SaveMsgBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SaveMsgBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveStateEditor.Designer.vb">
+      <DependentUpon>SaveStateEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SaveStateEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SmoothZoom.vb" />
+    <Compile Include="SNESGFX.vb" />
+    <Compile Include="TableContextMenu\TableContextMenu.Designer.vb">
+      <DependentUpon>TableContextMenu.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TableContextMenu\TableContextMenu.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TableContextMenu\TableContextMenuItem.Designer.vb">
+      <DependentUpon>TableContextMenuItem.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TableContextMenu\TableContextMenuItem.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TileAnimation.vb" />
+    <Compile Include="TitleFontSelector.Designer.vb">
+      <DependentUpon>TitleFontSelector.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TitleFontSelector.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TitleGFX.vb" />
+    <Compile Include="TitlePage.vb" />
+    <Compile Include="TitlePageEdCtrl.Designer.vb">
+      <DependentUpon>TitlePageEdCtrl.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TitlePageEdCtrl.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TitlePageEditor.Designer.vb">
+      <DependentUpon>TitlePageEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TitlePageEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tools\BossMonsterTool.vb" />
+    <Compile Include="Tools\MonsterTool.vb" />
+    <Compile Include="Tools\NRMonsterTool.vb" />
+    <Compile Include="OpenLevel.Designer.vb">
+      <DependentUpon>OpenLevel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="OpenLevel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ROM.vb" />
+    <Compile Include="Selection.vb" />
+    <Compile Include="Tabs.Designer.vb">
+      <DependentUpon>Tabs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Tabs.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tileset.vb" />
+    <Compile Include="TileSuggestList.vb" />
+    <Compile Include="Tools\ItemTool.vb" />
+    <Compile Include="Tools\ObjectTool.vb" />
+    <Compile Include="Tools\PaintbrushTool.vb" />
+    <Compile Include="Tools\PasteTilesTool.vb" />
+    <Compile Include="Tools\PencilSelectTool.vb" />
+    <Compile Include="Tools\RectangleSelectTool.vb" />
+    <Compile Include="Tools\SpriteTool.vb" />
+    <Compile Include="Tools\TileSelectTool.vb" />
+    <Compile Include="Tools\TileSuggestTool.vb" />
+    <Compile Include="Tools\Tool.vb" />
+    <Compile Include="Tools\VictimTool.vb" />
+    <Compile Include="UndoManager\BMAction.vb" />
+    <Compile Include="UndoManager\ItemAction.vb" />
+    <Compile Include="UndoManager\MonsterAction.vb" />
+    <Compile Include="UndoManager\NRMAction.vb" />
+    <Compile Include="UndoManager\SpriteAction.vb" />
+    <Compile Include="UndoManager\TileAction.vb" />
+    <Compile Include="UndoManager\UndoManager.vb" />
+    <Compile Include="UndoManager\VictimAction.vb" />
+    <Compile Include="Victim.vb" />
+    <Compile Include="ViewImage.Designer.vb">
+      <DependentUpon>ViewImage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ViewImage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZAMNClip.vb" />
+    <Compile Include="ZAMNCompress.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AddressUpDown.resx">
+      <DependentUpon>AddressUpDown.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClearButton.resx">
+      <DependentUpon>ClearButton.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExpandPanel.resx">
+      <DependentUpon>ExpandPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LevelSettings.resx">
+      <DependentUpon>LevelSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingLevel.resx">
+      <DependentUpon>LoadingLevel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LvlEdCtrl.resx">
+      <DependentUpon>LvlEdCtrl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editor.resx">
+      <DependentUpon>Editor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectBrowsers\BMonsterProp.resx">
+      <DependentUpon>BMonsterProp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectBrowsers\ItemProp.resx">
+      <DependentUpon>ItemProp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectBrowsers\MonsterProp.resx">
+      <DependentUpon>MonsterProp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectBrowsers\NRMProp.resx">
+      <DependentUpon>NRMProp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectBrowsers\ObjectBrowser.resx">
+      <DependentUpon>ObjectBrowser.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ObjectBrowsers\VictimProp.resx">
+      <DependentUpon>VictimProp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenLevel.resx">
+      <DependentUpon>OpenLevel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordEditor.resx">
+      <DependentUpon>PasswordEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveMsgBox.resx">
+      <DependentUpon>SaveMsgBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveStateEditor.resx">
+      <DependentUpon>SaveStateEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableContextMenu\TableContextMenu.resx">
+      <DependentUpon>TableContextMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TableContextMenu\TableContextMenuItem.resx">
+      <DependentUpon>TableContextMenuItem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TitleFontSelector.resx">
+      <DependentUpon>TitleFontSelector.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TitlePageEdCtrl.resx">
+      <DependentUpon>TitlePageEdCtrl.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TitlePageEditor.resx">
+      <DependentUpon>TitlePageEditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewImage.resx">
+      <DependentUpon>ViewImage.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <EmbeddedResource Include="ROMExpand.ips" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save States\BSNES.bst" />
+    <None Include="Resources\Suggest Lists\GrassR.zsl" />
+    <None Include="Resources\Suggest Lists\GrassR.zsl.prob" />
+    <None Include="Resources\Suggest Lists\Mall.zsl" />
+    <None Include="Resources\Suggest Lists\Pyramid.zsl" />
+    <None Include="Resources\X2.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\X.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\X3.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\Arrow.PNG" />
+    <None Include="Resources\ItemIndexes.bin" />
+    <None Include="Resources\ItemPalettes.bin" />
+    <None Include="Resources\Suggest Lists\Grass.zsl" />
+    <None Include="Resources\VictimGFX.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UnknownItem.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UnknownVictim.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Brush.PNG" />
+    <None Include="Resources\Icons\Copy.png" />
+    <None Include="Resources\Icons\Cut.PNG" />
+    <None Include="Resources\Icons\Dog.png" />
+    <None Include="Resources\Icons\Dropper.PNG" />
+    <None Include="Resources\Icons\FirstAidKit.PNG" />
+    <None Include="Resources\Icons\Folder.png" />
+    <None Include="Resources\Icons\Paste.PNG" />
+    <None Include="Resources\Icons\PencilSelect.PNG" />
+    <None Include="Resources\Icons\Save.png" />
+    <None Include="Resources\Icons\Selection.PNG" />
+    <None Include="Resources\Icons\TileSelect.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\BlueFolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Chainsaw.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\MagnifyingGlass.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Add.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Delete.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LevelTxt.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\lightbulb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\DrTongue.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Zombie.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DropArrow.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Align_middle.PNG" />
+    <None Include="Resources\Icons\Align_center.PNG" />
+    <None Include="Resources\Icons\Refresh.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons\Clear.png" />
+    <None Include="Resources\Icons\Clear2.png" />
+    <None Include="Resources\Circle.PNG" />
+    <None Include="Resources\Caret.PNG" />
+    <Content Include="Secret.ICO" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
