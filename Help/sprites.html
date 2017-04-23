@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	<title>ZAMN Editor Help - Sprites</title>
+</head>
+
+<body id="top">
+
+<div id="layout_wrapper">
+<div id="layout_wrapper2">
+<div id="layout_wrapper3">
+<div id="layout_wrapper4">
+
+	<div id="header_wrapper">
+		<div id="header">
+		
+			<div id="site_title">
+				<img src="img/Logo1.PNG" alt="ZAMN Editor"/>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="navigation">
+
+		<div id="nav">
+
+			<ul class="tabbed">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="general.html">General</a></li>
+				<li><a href="background.html">Background</a></li>
+				<li class="current_page_item"><a href="sprites.html">Sprites</a></li>
+				<li><a href="settings.html">Settings</a></li>
+			</ul>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+	<div id="main_wrapper">
+		<div id="main">
+
+			<div class="left" id="content_wrapper">
+				<div id="content">
+
+					<div class="post">
+
+						<div class="post_title"><h2><a name="General" /><a href="#General">General</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The sprites make up all of the &quot;objects&quot; that are in the level.  This includes items, victims, and the three types of monsters.  There is one tool for editing each type of sprite</p>
+							<p>
+							<a href="#Item"><img src="img/FirstAidKit.PNG" /> Item Tool:</a> Edits items.<br />
+							<a href="#Victim"><img src="img/Dog.PNG" /> Victim Tool:</a> Edits Victims.<br />
+							<a href="#NRespawn"><img src="img/Chainsaw.PNG" /> Non-Respawning Monster Tool:</a> Edits monsters that don't come back after they are killed.<br />
+							<a href="#Respawn"><img src="img/Zombie.PNG" /> Respawning Monster Tool:</a> Edits monsters that do come back after they are killed.<br />
+							<a href="#Boss"><img src="img/DrTongue.PNG" /> Boss Monster Tool:</a> Edits the special boss monsters.<br />
+							</p>
+							<p>Sprites have selections much like the background does, but certain sprites are selected instead of regions.  All operations done to sprites affect all of the selected ones.</p>
+							
+							<p>All sprite tools work in almost the same way.  Here is how to use them:</p>
+							
+							<ul>
+								<li>Click the mouse on the background (not on a sprite) and drag to select sprites within a rectangle.  This replaces the selection unless modifier keys are used.</li>
+								<li>Click a sprite that isn't selected to replace the selection with that sprite.  The same modifier keys apply to this.</li>
+								<li>Click on a sprite that is selected and drag to move all selected sprites.</li>
+								<li>Hold Shift while moving sprites to lock them to the 8x8 pixel grid.</li>
+								<li>Hold Ctrl and click on a sprite and drag to clone that sprite.  If a selected sprite is cloned, all selected sprites are cloned with it.</li>
+								<li>Hold Ctrl and click on the background to create a new sprite.  The type of sprite selected in the left panel is used.</li>
+								<li>Click a new sprite type in the left panel to change all selected sprites to that type.</li>
+								<li>Press the delete key on your keyboard to delete all selected sprites.</li>
+							</ul>
+						</div>
+						
+					</div>
+						
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Item" /><a href="#Item">Item Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The item tool follows all of the standard sprite editing rules.  There are certain items that need to be explained.</p>
+							<ul>
+								<li>9 Purple Potion: This potion appears gray in the player's inventory.  It is a beta item and acts exactly like a mystery potion. DO NOT USE.</li>
+								<li>14 Popsicles:  Always use number 13 popsicles.  14 is a beta banana item that was changed to popsicle graphics. DO NOT USE.</li>
+								<li>21 Flamethrower: The graphics look like a can of paint.  This is actually the flamethrower item which is used in the original game, but it's hidden behind something so its graphics are never seen.</li>
+								<li>25 Pile of keys: This is the item that is dropped on 2 player mode when one player dies so that the other can pick up his or her keys. DO NOT USE.</li>
+							</ul>
+							<p>Items that shouldn't be used are marked with an ! sign in the left panel for reference.</p>
+							
+						</div>
+						
+					</div>
+						
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Victim" /><a href="#Victim">Victim Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The victim tool follows all sprite rules except victims cannot be deleted or added.  This is because there are always 10.  The numbers below the victims are the number of which victims are eliminated.  Victim number 1 will always be there, but 10 won't as soon as one victim is dead.</p>
+							<p>Player start positions are also edited with the victim tool.  The Zeke and Julie player images can be selected and edited just as the victims can.  Zeke represents the first player reguardless of what character he or she is and Julie is the second player.</p>
+							
+						</div>
+						
+					</div>
+						
+					<div class="post">
+
+						<div class="post_title"><h2><a name="NRespawn" /><a href="#NRespawn">Non-Respawning Monster Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>This tool edits monsters that don't come back once they are killed.  This includes monsters like the chainsaw men and dracula, but it also includes fire which isn't really a monster.  There are 2 plant monsters shown on the left panel.  I haven't noticed any difference between the two.</p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Respawn" /><a href="#Respawn">Respawning Monster Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>This tool edits monsters that do come back after they are killed, such as zombies and mummies.  If two of the same monster are shown in the panel, then the second one is a faster version of the original except in the case of the purple ant.  The first purple ant is one that comes out of a hole.  The second is one that just appears, usually from hiding beneath a tree.</p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Boss" /><a href="#Boss">Boss Monster Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The boss monster tool edits the special boss monsters in the game.  This includes UFO, Giant Baby, Snakeoids, and Dr. Tongue as a giant spider.  Always make sure you use the correct snakeoid, because they leave trails behind.</p>
+							
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+
+			<div class="right" id="sidebar_wrapper">
+				<div id="sidebar">
+
+					<div class="box">
+
+						<div class="box_title">Links</div>
+
+						<div class="box_content">
+							<ul>
+								<li><a href="http://www.code.google.com/p/zamn-editor/">ZAMN Editor on Google Code</a></li>
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+	</div>
+
+	<div id="footer">
+
+		<div class="left">
+			&copy; 2011 Piranhaplant
+		</div>
+		<div class="right">
+			<a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a> 
+		</div>
+		
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

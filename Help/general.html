@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	<title>ZAMN Editor Help - General</title>
+</head>
+
+<body id="top">
+
+<div id="layout_wrapper">
+<div id="layout_wrapper2">
+<div id="layout_wrapper3">
+<div id="layout_wrapper4">
+
+	<div id="header_wrapper">
+		<div id="header">
+		
+			<div id="site_title">
+				<img src="img/Logo1.PNG" alt="ZAMN Editor"/>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="navigation">
+
+		<div id="nav">
+
+			<ul class="tabbed">
+				<li><a href="index.html">Home</a></li>
+				<li class="current_page_item"><a href="general.html">General</a></li>
+				<li><a href="background.html">Background</a></li>
+				<li><a href="sprites.html">Sprites</a></li>
+				<li><a href="settings.html">Settings</a></li>
+			</ul>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+	<div id="main_wrapper">
+		<div id="main">
+
+			<div class="left" id="content_wrapper">
+				<div id="content">
+
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Toolbar" /><a href="#Toolbar">Toolbar</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>This is the toolbar in ZAMN Editor</p>
+							<p><img src="img/Toolbar.PNG" /></p>
+							
+							<img src="img/Folder.PNG" /> Opens a ROM with the editor<br />
+							<img src="img/BlueFolder.PNG" /> Opens a level<br />
+							<img src="img/Save.PNG" /> Saves the current level<br />
+							<hr />
+							<img src="img/Cut.PNG" /> Deletes the currently selected objects and copies them to the clipboard<br />
+							<img src="img/Copy.PNG" /> Copies the currently selected objects to the clipboard<br />
+							<img src="img/Paste.PNG" /> Pastes the content from the clipboard into the level<br />
+							<img src="img/Undo.PNG" /> Undoes the last edit to the level<br />
+							<img src="img/Redo.PNG" /> Redoes the last edit that was undone<br />
+							<hr />
+							<img src="img/MagnifyingGlass.PNG" /> Change the zoom percentage<br />
+							<hr />
+							<img src="img/Brush.PNG" /> Switches to the <a href="background.html#Brush">Brush Tool</a><br />
+							<img src="img/lightbulb.PNG" /> Switches to the <a href="background.html#Suggest">Tile Suggest Tool</a><br />
+							<img src="img/Selection.PNG" /> Switches to the <a href="background.html#Rectangle">Rectangle Select Tool</a><br />
+							<img src="img/PencilSelect.PNG" /> Switches to the <a href="background.html#Pencil">Pencil Select Tool</a><br />
+							<img src="img/TileSelect.PNG" /> Switches to the <a href="background.html#TileSelect">Tile Select Tool</a><br />
+							<img src="img/FirstAidKit.PNG" /> Switches to the <a href="sprites.html#Item">Item Tool</a><br />
+							<img src="img/Dog.PNG" /> Switches to the <a href="sprites.html#Victim">Victim Tool</a><br />
+							<img src="img/Chainsaw.PNG" /> Switches to the <a href="sprites.html#NRespawn">Non-Respawning Monster Tool</a><br />
+							<img src="img/Zombie.PNG" /> Switches to the <a href="sprites.html#Respawn">Respawning Monster Tool</a><br />
+							<img src="img/DrTongue.PNG" /> Switches to the <a href="sprites.html#Boss">Boss Monster Tool</a><br />
+
+						</div>
+
+					</div>
+					
+					<div class="post">
+					
+						<div class="post_title"><h2><a name="Files" /><a href="#Files">Opening and Saving Files</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>Click the folder icon (<img src="img/Folder.PNG" />) on the toolbar or go to File/Open to select a ROM.  Navigate to the ROM you want to open and click the open button.  Once you have opened a ROM, you can open it again by going to File/Recent ROMs and selecting it.</p>
+							<p>Once you have opened a ROM, the Open Level button (<img src="img/BlueFolder.PNG" />) will be enabled.  Click this to open a level.  You can select a level by clicking it or you can select multiple levels by holding Ctrl, Shift, or by dragging across multiple levels.</p>
+							<p>A level can be saved by clicking the Save button (<img src="img/Save.PNG" />) on the toolbar or by going to File/Save.  This will add the changes made to the current level to the ROM.  Saving a level cannot be undone!</p>
+						
+						</div>
+					
+					</div>
+					
+					<div class="post">
+					
+						<div class="post_title"><h2><a name="Clipboard" /><a href="#Clipboard">Using the Clipboard</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The clipboard is used to hold the data that is copied or cut.  ZAMN Editor copies all data as text, so it can be pasted in another file or online.</p>
+							<p>When you press the copy button (<img src="img/Copy.PNG" />), the currently selected objects are put on the clipboard.  When you press the cut button (<img src="img/Cut.PNG" />), the currently selected objects are deleted from the level then put on the clipboard.  This does not apply to the background because tiles can't be deleted, only replaced with a different tile.</p>
+							<p>The paste button (<img src="img/Paste.PNG" />) will take the data from the clipboard and put it on the level.  If the wrong type of data is being pasted (ex. pasting items while using the monster tool), nothing will happen.  The pasted objects will be automatically selected, and you can move and edit them just like anything else in the level.</p>
+							<p>ZAMN Editor text will look something like this:</p>
+							<code>ZAMNClip|I0009301780A00BD01780A007E01A00D008F01A91100A001A91100B101A91100C101A91100CE01A104|EndClip</code>
+						
+						</div>
+					
+					</div>
+					
+					<div class="post">
+					
+						<div class="post_title"><h2><a name="Export" /><a href="#Export">Exporting and Importing Levels</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>A level can be exported as a file or copied as text and saved outside of the ROM.  This is useful for copying a level to another ROM, another level in the same ROM, or sharing it with others.</p>
+							<p>You can export a level to a file by clicking Level/Export.  Levels are saved with a .zl extension.  You can copy a level as text by clicking Level/Copy as text.</p>
+							<p>Levels can be imported back in from a file by clicking Level/Import, or from text by clicking Level/Paste from text.</p>
+							
+						</div>
+					
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Passwords" /><a href="#Passwords">Passwords</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The passwords in the game can be viewed by going to Edit/Passwords.  The number of victims is shown across the top, and the level number is shown on the side.  To create new random passwords for the game click Generate new passwords.  Passwords cannot be entered manually because they aren't stored in a straightforward format.</p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="ModifierKeys" /><a href="#ModifierKeys">Modifier Keys</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>Modifier keys are used to change how an action is done by holding a key prior to doing the action.  Here are the modifier keys in ZAMN Editor:
+							<ul>
+								<li>Shift: Override default selection behavior so that new objects are added to the selection.</li>
+								<li>Alt: Make selected objects be removed from the selection.</li>
+								<li>Ctrl: Create a new object</li>
+							</ul>
+							</p>
+							
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+
+			<div class="right" id="sidebar_wrapper">
+				<div id="sidebar">
+
+					<div class="box">
+
+						<div class="box_title">Links</div>
+
+						<div class="box_content">
+							<ul>
+								<li><a href="http://www.code.google.com/p/zamn-editor/">ZAMN Editor on Google Code</a></li>
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+	</div>
+
+	<div id="footer">
+
+		<div class="left">
+			&copy; 2011 Piranhaplant
+		</div>
+		<div class="right">
+			<a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a> 
+		</div>
+		
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

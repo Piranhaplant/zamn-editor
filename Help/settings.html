@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	<title>ZAMN Editor Help - Settings</title>
+</head>
+
+<body id="top">
+
+<div id="layout_wrapper">
+<div id="layout_wrapper2">
+<div id="layout_wrapper3">
+<div id="layout_wrapper4">
+
+	<div id="header_wrapper">
+		<div id="header">
+		
+			<div id="site_title">
+				<img src="img/Logo1.PNG" alt="ZAMN Editor"/>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="navigation">
+
+		<div id="nav">
+
+			<ul class="tabbed">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="general.html">General</a></li>
+				<li><a href="background.html">Background</a></li>
+				<li><a href="sprites.html">Sprites</a></li>
+				<li class="current_page_item"><a href="settings.html">Settings</a></li>
+			</ul>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+	<div id="main_wrapper">
+		<div id="main">
+
+			<div class="left" id="content_wrapper">
+				<div id="content">
+
+					<div class="post">
+
+						<div class="post_title"><h2><a name="General" /><a href="#General">General</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>Settings can edit aspects of the level that are not in the background or sprites.  To edit the level settings go to Level/Settings.</p>
+							<p>The settings are divided into 4 categories:
+							<ul>
+								<li><a href="#Tileset">Tileset:</a> Settings relating to the tiles used for the background.</li>
+								<li><a href="#Other">Other:</a> Miscellaneous level settings.</li>
+								<li><a href="#Fade">Palette Fade:</a> Used to fade the colors of the background.  This is used in the original game to make the levels go from day to night.</li>
+								<li><a href="#Bonuses">Bonuses:</a> Sets which bonuses can be received on the level.</li>
+							</ul></p>
+							<p>All settings have support for custom values.  This should only be used by advanced hackers who have inserted their own data into the ROM.  Click the radio button to change the type of a setting to custom.  Settings in the form of $xx:xxxx are adresses, the others are numerical values.</p>
+							<p>Address types can be changed by clicking the arrow button next to the address.  SNES LoROM is the address type used by the SNES itself.  Hexidecimal is the address type used by modern computers.  Hexidecimal addresses do not include the 512 byte header.  Click Save as default to save that address type as the default.  You will need to close and re-open the editor for this to take effect.</p>
+							<p>Click the cancel button to leave the level settings window without saving changes.  Click the apply button to save the changes, but not exit the window.  Click the OK button to leave the window and save changes.</p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Tileset" /><a href="#Tileset">Tileset Settings</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>These are the settings that affect the tiles used on the background.
+							<ul>
+								<li>Tiles: The arrangement of graphics tiles that are used on the background.</li>
+								<li>Palette: The colors used on the graphics.  The items in the drop down vary based on the tiles setting.</li>
+								<li>Graphics: The actual graphics used on the background.  This is automatically updated based on the tiles setting.</li>
+								<li>Collision: How tiles interact with the players.  This is also updated based on the tiles setting.</li>
+								<li>Unknown:  An unknown setting related to the tiles.  Automatically derived from the tiles setting.</li>
+							</ul></p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Other" /><a href="#Other">Other Settings</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>These are settings that don't fit into any other category.
+							<ul>
+								<li>Sprite Palette: The colors used on sprites.  This is always the same unless a custom value is used.</li>
+								<li>Palette Animation: Used to animate colors in the background.</li>
+								<li>Music: Sets what song is played.</li>
+								<li>Unknown: An unknown level setting.  This is always set to custom and using automatic does nothing.  Changing this value appears to have no effect on the level.</li>
+								<li>Unknown: Another unknown setting.  This value always remains constant throughout the default levels.</li>
+							</ul></p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Fade" /><a href="#Fade">Palette Fade</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>This is used to fade the background and sprite palette to a different palette.  Check the checkbox in the upper left corner of the box to enable it.
+							<ul>
+								<li>Palette: Sets the new palette of the background.</li>
+								<li>Sprite Palette: Sets the new sprite palette.</li>
+							</ul></p>
+							<p>Adding a palette fade will also cause the tourists to turn into werewolves on the level.</p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Bonuses" /><a href="#Bonuses">Bonuses</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>Use the checkboxes to set which bonuses the player can get on the level.  The monster frozen bonus (and possibly some others) are beta and will not work.</p>
+							<p>Custom bonus numbers can be added for advanced users.  Type the number of the bonus into the box and click the plus sign.  A custom bonus can be removed by selecting it and clicking the minus sign.  If a custom bonus number is the same as an existing bonus, it won't be added.</p>
+							
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+
+			<div class="right" id="sidebar_wrapper">
+				<div id="sidebar">
+
+					<div class="box">
+
+						<div class="box_title">Links</div>
+
+						<div class="box_content">
+							<ul>
+								<li><a href="http://www.code.google.com/p/zamn-editor/">ZAMN Editor on Google Code</a></li>
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+	</div>
+
+	<div id="footer">
+
+		<div class="left">
+			&copy; 2011 Piranhaplant
+		</div>
+		<div class="right">
+			<a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a> 
+		</div>
+		
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>

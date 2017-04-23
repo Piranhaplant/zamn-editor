@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<meta name="description" content=""/>
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	<title>ZAMN Editor Help - Background</title>
+</head>
+
+<body id="top">
+
+<div id="layout_wrapper">
+<div id="layout_wrapper2">
+<div id="layout_wrapper3">
+<div id="layout_wrapper4">
+
+	<div id="header_wrapper">
+		<div id="header">
+		
+			<div id="site_title">
+				<img src="img/Logo1.PNG" alt="ZAMN Editor"/>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="navigation">
+
+		<div id="nav">
+
+			<ul class="tabbed">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="general.html">General</a></li>
+				<li class="current_page_item"><a href="background.html">Background</a></li>
+				<li><a href="sprites.html">Sprites</a></li>
+				<li><a href="settings.html">Settings</a></li>
+			</ul>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+
+	</div>
+
+	<div id="main_wrapper">
+		<div id="main">
+
+			<div class="left" id="content_wrapper">
+				<div id="content">
+
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Tools" /><a href="#Tools">Tools</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The background makes up a majority of how the level looks to the player.  The background is made up of 64x64 pixel tiles that fit together.  There are 5 tools used to aid in editing the background.</p>
+							<a href="#Brush"><img src="img/Brush.PNG" /> Brush Tool:</a> Used to manually edit background tiles.<br />
+							<a href="#Suggest"><img src="img/lightbulb.PNG" /> Tile Suggest Tool:</a> Suggests which tiles should be used next to other tiles.<br />
+							<a href="#Rectangle"><img src="img/Selection.PNG" /> Rectangle Select Tool:</a> Creates a rectangular selection.<br />
+							<a href="#Pencil"><img src="img/PencilSelect.PNG" /> Pencil Select Tool:</a> Select tiles in any shape.<br />
+							<a href="#TileSelect"><img src="img/TileSelect.PNG" /> Tile Select Tool:</a> Select all tiles of the same type.<br />
+							
+						</div>
+
+					</div>
+
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Selections" /><a href="#Selections">Selections</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>Once tiles are selected, here is what you can do with them:</p>
+							<ul>
+								<li>Copy them to the clipboard and paste them back in a different spot</li>
+								<li>Select a new tile on the left side to replace all selected tiles</li>
+							</ul>
+							<p>When tiles are pasted, they will be automatically move to the top left corner.  Click on a selected (darkened) tile and drag to move the selected tiles.  When you lift up the mouse, the tiles will be moved to the closest spot on the grid.  Click somewhere that isn't a selected tile to add the new tiles to the level.</p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Brush" /><a href="#Brush">Brush Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The brush tool is used to paint over an existing background tile with a new one.  Click on a tile in the left panel, then click on the level to paint over the tile.  Click and drag on the level to replace multiple tiles.</p>
+							<p>You can select a type of tile to paint with by holding down the Ctrl key and clicking on the background.</p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Suggest" /><a href="#Suggest">Tile Suggest Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The tile suggest tool makes it a lot easier to create backgrounds.  It creates a list of all reasonable tiles that should go next to another tile, making it so there is a much shorter list to look through.</p>
+							<p>To use the tool, click on a background tile, and drag onto a tile that is next to it (not diagonally).  The panel on the left will be filled with tiles that should go in the tile with the arrow, based on the tile with the dot.</p>
+							<p>This tool currently only works with the Grass and Mall tilesets.  I will add support for all tilesets in future versions.</p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Rectangle" /><a href="#Rectangle">Rectangle Select Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The rectangle select tool creates rectangular selections over the background.  To use the tool simply click and drag across the background.  By default, the new selection replaces the old one.  Modifier keys can be used to change this.</p>
+
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="Pencil" /><a href="#Pencil">Pencil Select Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The pencil select tool is used to select tiles in any shape.  Click on a tile and drag to select tiles.  This tool always adds to the selection, so shift is not needed.  Like the rectangle select tool, holding Alt before dragging will remove from the selection.</p>
+							
+						</div>
+						
+					</div>
+					
+					<div class="post">
+
+						<div class="post_title"><h2><a name="TileSelect" /><a href="#TileSelect">Tile Select Tool</a></h2></div>
+						<hr />
+						<div class="post_body">
+						
+							<p>The tile select tool is used to select all tiles of a certain type.  Click on the background, and all tiles of the same type as the one you clicked on will be selected.  This tool always replaces the selection and modifier keys have no effect on this.</p>
+							<p>Another use of this tool is replacing tiles of one type with another.  Use the tool to select the tiles of the type you want to replace, then click on a new type in the panel on the left.
+							
+						</div>
+						
+					</div>
+
+				</div>
+			</div>
+
+			<div class="right" id="sidebar_wrapper">
+				<div id="sidebar">
+
+					<div class="box">
+
+						<div class="box_title">Links</div>
+
+						<div class="box_content">
+							<ul>
+								<li><a href="http://www.code.google.com/p/zamn-editor/">ZAMN Editor on Google Code</a></li>
+							</ul>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="clearer">&nbsp;</div>
+
+		</div>
+	</div>
+
+	<div id="footer">
+
+		<div class="left">
+			&copy; 2009 Piranhaplant
+		</div>
+		<div class="right">
+			<a href="http://templates.arcsin.se/">Website template</a> by <a href="http://arcsin.se/">Arcsin</a> 
+		</div>
+		
+		<div class="clearer">&nbsp;</div>
+
+	</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
