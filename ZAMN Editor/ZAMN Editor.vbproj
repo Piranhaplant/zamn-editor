@@ -403,9 +403,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Save States\BSNES.bst" />
+    <None Include="Resources\Suggest Lists\Castle.zsl" />
     <None Include="Resources\Suggest Lists\GrassR.zsl" />
     <None Include="Resources\Suggest Lists\GrassR.zsl.prob" />
     <None Include="Resources\Suggest Lists\Mall.zsl" />
+    <None Include="Resources\Suggest Lists\Office.zsl" />
     <None Include="Resources\Suggest Lists\Pyramid.zsl" />
     <None Include="Resources\X2.PNG" />
   </ItemGroup>

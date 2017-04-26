@@ -11,7 +11,7 @@
     Public Shared BossMonsters As Integer() = {&H1073C, &H11569, &H128BB, &H128C3, &H1AD33}
     Public Shared BossMonsterNames As String() = {"UFO", "Giant Baby", "Desert Snakeoid", "Grass Snakeoid", "Giant Spider"}
     Public Shared SpBossMonsters As Integer() = {&H12B95, &H157CF} 'Palette fade, Tile animation
-    Public Shared SuggestTilesets As Integer() = {&HD8000, &HE36EF, &HDBCB5} ', &HD4000, &HE0000}
+    Public Shared SuggestTilesets As Integer() = {&HD8000, &HE36EF, &HDBCB5, &HD4000, &HE0000}
     Public Shared SpritePtrs As Integer() = {-1, &H19FE2, &H19776, &H19C6D, &H19E15, &H19D00, &H19699, &H1993D, &H19843, &H19A89, &H19EBE, &H19BAD, _
                                              &H16F36, &H983A, &HA455, &H1725D, &HD2F1, &HD2F9, &H1B55E, &H1B7F6, _
                                              &H87F8, &H88CA, &H8C17, &H8E89, &H8F1F, &H99DF, &H9A3E, &HABF5, &HB2B0, &HB664, &HC1FB, _
