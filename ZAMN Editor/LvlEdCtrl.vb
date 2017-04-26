@@ -13,7 +13,7 @@
     Public priority As Boolean
     Public selection As Selection
     Public UndoMgr As UndoManager
-    Public Animate As Boolean
+    Public Active As Boolean
 
     Public fillBrush As SolidBrush
     Public eraserBrush As SolidBrush
@@ -377,7 +377,7 @@
     End Sub
 
     Private Sub UpdateTileAnim()
-        If Animate And lvl.animation IsNot Nothing Then
+        If Active And lvl.animation IsNot Nothing Then
             If lvl.animation.AdvanceFrame() Then
                 Repaint()
                 TilePicker.Invalidate(True)

@@ -1,4 +1,6 @@
 ﻿Public Class UndoManager
+    Private Const MaxToolStripItems As Integer = 20
+
     Private undo As ToolStripSplitButton
     Private redo As ToolStripSplitButton
     Private EdControl As LvlEdCtrl
@@ -14,9 +16,6 @@
         undo = UndoButton
         redo = RedoButton
         EdControl = editor
-
-        AddHandler undo.ButtonClick, AddressOf onUndoLast
-        AddHandler redo.ButtonClick, AddressOf onRedoLast
     End Sub
 
     Public Shared Function CreateList(Of T)(ByVal item As T) As List(Of T)
@@ -30,7 +29,7 @@
         If merge AndAlso UActions.Count > 0 AndAlso UActions.Peek().CanMerge AndAlso UActions.Peek().GetType().Equals(act.GetType()) Then
             act.SetEdControl(EdControl)
             If act.cancelAction Then Return
-            act.DoRedo(False)
+            act.DoRedo()
             UActions.Peek().Merge(act)
             act = Nothing
         Else
@@ -41,6 +40,9 @@
             AddHandler item.MouseEnter, AddressOf updateActCount
             AddHandler item.Click, AddressOf onUndoActions
             undo.DropDownItems.Insert(0, item)
+            If undo.DropDownItems.Count > MaxToolStripItems Then
+                undo.DropDownItems.RemoveAt(undo.DropDownItems.Count - 1)
+            End If
         End If
         If UActions.Count <= savePos Then
             savePos = -1
@@ -52,7 +54,7 @@
         undo.Enabled = True
         redo.Enabled = False
         If act IsNot Nothing And performAction Then
-            act.DoRedo(False)
+            act.DoRedo()
         End If
         merge = True
     End Sub
@@ -60,7 +62,7 @@
     Public Sub Perform(ByVal act As Action)
         act.SetEdControl(EdControl)
         If act.cancelAction Then Return
-        act.DoRedo(False)
+        act.DoRedo()
     End Sub
 
     Public Sub Clean()
@@ -73,21 +75,22 @@
         End Get
     End Property
 
-    Private Sub onUndoLast(ByVal sender As Object, ByVal e As EventArgs)
-        UndoLast(False)
-    End Sub
-
-    Public Sub UndoLast(ByVal multiple As Boolean)
+    Public Sub UndoLast()
         If UActions.Count > 0 Then
+            Dim act As Action = UActions.Pop()
             undo.DropDownItems.RemoveAt(0)
-            Dim item As New ToolStripMenuItem(UActions.Peek().ToString())
-            AddHandler item.MouseEnter, AddressOf updateActCount
-            AddHandler item.Click, AddressOf onRedoActions
-            redo.DropDownItems.Insert(0, item)
-            UActions.Peek().DoUndo(multiple)
-            RActions.Push(UActions.Pop())
+            If undo.DropDownItems.Count < UActions.Count Then
+                undo.DropDownItems.Add(CreateUndoToolStripItem(UActions(undo.DropDownItems.Count)))
+            End If
+            redo.DropDownItems.Insert(0, CreateRedoToolStripItem(act))
+            If redo.DropDownItems.Count > MaxToolStripItems Then
+                redo.DropDownItems.RemoveAt(redo.DropDownItems.Count - 1)
+            End If
+            act.DoUndo()
+            RActions.Push(act)
             undo.Enabled = undo.DropDownItems.Count > 0
             redo.Enabled = True
+            merge = False
         End If
     End Sub
 
@@ -97,25 +100,26 @@
 
     Public Sub UndoActions(ByVal count As Integer)
         For l As Integer = 0 To count - 1
-            UndoLast(l < count - 1)
+            UndoLast()
         Next
     End Sub
 
-    Private Sub onRedoLast(ByVal sender As Object, ByVal e As EventArgs)
-        RedoLast(False)
-    End Sub
-
-    Public Sub RedoLast(ByVal multiple As Boolean)
+    Public Sub RedoLast()
         If RActions.Count > 0 Then
+            Dim act As Action = RActions.Pop()
             redo.DropDownItems.RemoveAt(0)
-            Dim item As New ToolStripMenuItem(RActions.Peek().ToString())
-            AddHandler item.MouseEnter, AddressOf updateActCount
-            AddHandler item.Click, AddressOf onUndoActions
-            undo.DropDownItems.Insert(0, item)
-            RActions.Peek().DoRedo(multiple)
-            UActions.Push(RActions.Pop())
+            If redo.DropDownItems.Count < RActions.Count Then
+                redo.DropDownItems.Add(CreateRedoToolStripItem(RActions(redo.DropDownItems.Count)))
+            End If
+            undo.DropDownItems.Insert(0, CreateUndoToolStripItem(act))
+            If undo.DropDownItems.Count > MaxToolStripItems Then
+                undo.DropDownItems.RemoveAt(undo.DropDownItems.Count - 1)
+            End If
+            act.DoRedo()
+            UActions.Push(act)
             redo.Enabled = redo.DropDownItems.Count > 0
             undo.Enabled = True
+            merge = False
         End If
     End Sub
 
@@ -125,19 +129,25 @@
 
     Public Sub RedoActions(ByVal count As Integer)
         For l As Integer = 0 To count - 1
-            RedoLast(l < count - 1)
+            RedoLast()
         Next
     End Sub
 
     Public Sub ReAddItems()
         undo.DropDownItems.Clear()
         For Each act As Action In UActions
-            undo.DropDownItems.Add(act.ToString())
+            undo.DropDownItems.Add(CreateUndoToolStripItem(act))
+            If undo.DropDownItems.Count = MaxToolStripItems Then
+                Exit For
+            End If
         Next
         undo.Enabled = UActions.Count > 0
         redo.DropDownItems.Clear()
         For Each act As Action In RActions
-            redo.DropDownItems.Add(act.ToString())
+            redo.DropDownItems.Add(CreateRedoToolStripItem(act))
+            If redo.DropDownItems.Count = MaxToolStripItems Then
+                Exit For
+            End If
         Next
         redo.Enabled = RActions.Count > 0
     End Sub
@@ -146,6 +156,20 @@
         Dim item As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
         actionCount = CType(item.OwnerItem, ToolStripSplitButton).DropDownItems.IndexOf(item) + 1
     End Sub
+
+    Private Function CreateUndoToolStripItem(ByVal act As Action) As ToolStripMenuItem
+        Dim item As New ToolStripMenuItem(act.ToString())
+        AddHandler item.MouseEnter, AddressOf updateActCount
+        AddHandler item.Click, AddressOf onUndoActions
+        Return item
+    End Function
+
+    Private Function CreateRedoToolStripItem(ByVal act As Action) As ToolStripMenuItem
+        Dim item As New ToolStripMenuItem(act.ToString())
+        AddHandler item.MouseEnter, AddressOf updateActCount
+        AddHandler item.Click, AddressOf onRedoActions
+        Return item
+    End Function
 End Class
 
 Public Class Action
@@ -154,19 +178,15 @@ Public Class Action
 
     Public Sub New()
     End Sub
-    Public Sub DoUndo(ByVal multiple As Boolean)
+    Public Sub DoUndo()
         Me.Undo()
-        'If TypeOf Me Is ChangeSpriteTypeAction OrElse Not multiple Then
         Me.AfterAction()
         EdControl.Repaint()
-        'End If
     End Sub
-    Public Sub DoRedo(ByVal multiple As Boolean)
+    Public Sub DoRedo()
         Me.Redo()
-        'If TypeOf Me Is ChangeSpriteTypeAction OrElse Not multiple Then
         Me.AfterAction()
         EdControl.Repaint()
-        'End If
     End Sub
     Public Overridable Sub Undo()
     End Sub

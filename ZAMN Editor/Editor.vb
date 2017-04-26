@@ -98,7 +98,7 @@
                     EdControl.Dock = DockStyle.Fill
                     EdControl.LoadLevel(l)
                     EdControl.UndoMgr = New UndoManager(UndoTool, RedoTool, EdControl)
-                    EdControl.Animate = ViewAnimate.Checked
+                    EdControl.Active = ViewAnimate.Checked
                     'Receive keypresses used for special shortcut keys
                     AddHandler EdControl.canvas.KeyDown, AddressOf LvlEdCtrl_canvas_KeyDown
                     UndoTool.Enabled = False
@@ -156,12 +156,12 @@
         End If
     End Sub
 
-    Private Sub EditUndo_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles EditUndo.Click
-        UndoTool.PerformButtonClick()
+    Private Sub EditUndo_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles EditUndo.Click, UndoTool.ButtonClick
+        EdControl.UndoMgr.UndoLast()
     End Sub
 
-    Private Sub EditRedo_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles EditRedo.Click
-        RedoTool.PerformButtonClick()
+    Private Sub EditRedo_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles EditRedo.Click, RedoTool.ButtonClick
+        EdControl.UndoMgr.RedoLast()
     End Sub
 
     Private Sub UndoTool_EnabledChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles UndoTool.EnabledChanged
@@ -250,7 +250,7 @@
     Private Sub ViewAnimate_Click(sender As System.Object, e As System.EventArgs) Handles ViewAnimate.Click
         My.Settings.Animate = ViewAnimate.Checked
         If EdControl IsNot Nothing Then
-            EdControl.Animate = ViewAnimate.Checked
+            EdControl.Active = ViewAnimate.Checked
         End If
     End Sub
 
@@ -431,7 +431,6 @@
         EdControl.UpdateScrollBars()
         EdControl.Focus()
         EdControl.Repaint()
-        EdControl.UndoMgr.ReAddItems()
     End Sub
 
     Public Sub SetCopy(ByVal enabled As Boolean)
@@ -447,11 +446,12 @@
 
     Private Sub Tabs_TabSelected(ByVal sender As Object, ByVal e As System.EventArgs) Handles Tabs.TabSelected
         If updateTab Then
-            EdControl.Animate = False
+            EdControl.Active = False
             EdControl = Tabs.SelectedTab.Controls(0)
-            EdControl.Animate = ViewAnimate.Checked
+            EdControl.Active = ViewAnimate.Checked
             SetTool(CurTool)
             UpdateEdControl()
+            EdControl.UndoMgr.ReAddItems()
         End If
     End Sub
 
