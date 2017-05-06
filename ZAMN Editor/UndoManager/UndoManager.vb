@@ -69,6 +69,10 @@
         savePos = UActions.Count
     End Sub
 
+    Public Sub ForceDirty()
+        savePos = -1
+    End Sub
+
     Public ReadOnly Property Dirty
         Get
             Return savePos <> UActions.Count

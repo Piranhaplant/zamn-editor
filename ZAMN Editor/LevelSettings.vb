@@ -295,6 +295,7 @@
             lvl.GFX.Reload(s, lvl.spritePal)
             s.Close()
         End If
+        ed.EdControl.UndoMgr.ForceDirty()
         ed.EdControl.Repaint()
     End Sub
 

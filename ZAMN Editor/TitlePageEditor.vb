@@ -37,6 +37,7 @@
         ed.EdControl.lvl.page1.Sort()
         ed.EdControl.lvl.page2 = TitlePageEdCtrl2.tp
         ed.EdControl.lvl.page2.Sort()
+        ed.EdControl.UndoMgr.ForceDirty()
         Me.Close()
     End Sub
 
