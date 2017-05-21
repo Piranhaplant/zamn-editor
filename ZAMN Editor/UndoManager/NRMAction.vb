@@ -173,3 +173,52 @@ Public Class ChangeNRMTypeAction
         End If
     End Function
 End Class
+
+Public Class ChangeNRMExtraAction
+    Inherits NRMAction
+
+    Public newvalue As Integer
+    Public prevvalue As New List(Of Integer)
+
+    Public Sub New(ByVal NRMs As List(Of NRMonster), ByVal value As Integer)
+        MyBase.New(NRMs)
+        If NRMs.Count = 1 And NRMs(0).extra = newvalue Then
+            cancelAction = True
+            Return
+        End If
+        For Each m As NRMonster In NRMs
+            prevvalue.Add(m.extra)
+        Next
+        newvalue = value
+    End Sub
+
+    Public Overrides Sub Undo()
+        For l As Integer = 0 To NRMs.Count - 1
+            NRMs(l).extra = prevvalue(l)
+        Next
+    End Sub
+
+    Public Overrides Sub Redo()
+        For Each m As NRMonster In NRMs
+            m.extra = newvalue
+        Next
+    End Sub
+
+    Public Overrides ReadOnly Property CanMerge As Boolean
+        Get
+            Return True
+        End Get
+    End Property
+
+    Public Overrides Sub Merge(ByVal act As Action)
+        Me.newvalue = CType(act, ChangeNRMExtraAction).newvalue
+    End Sub
+
+    Public Overrides Function ToString() As String
+        If NRMs.Count = 1 Then
+            Return "Change non-respawning monster extra"
+        Else
+            Return "Change " & NRMs.Count.ToString & " non-respawning monsters extras"
+        End If
+    End Function
+End Class

@@ -167,6 +167,12 @@
                         If s.Position > curaddr Then
                             Do
                                 value = s.ReadByte + s.ReadByte * &H100
+                                If value < 0 Then
+                                    newData.Clear()
+                                    newData.Add(0)
+                                    newData.Add(0)
+                                    Exit Do
+                                End If
                                 If value = 0 Then passed = True
                                 If passed And (value = &HFFFF Or value = &HFFFE) Then count -= 1
                                 If Not passed Then count += 1
@@ -263,8 +269,8 @@
         For Each m As NRMonster In objects.NRMonsters
             x = m.X + Pointers.SpriteOffsets(m.index * 2)
             y = m.Y + Pointers.SpriteOffsets(m.index * 2 + 1)
-            file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, m.unused1 Mod &H100, m.unused1 \ &H100, _
-                                      m.unused2 Mod &H100, m.unused2 \ &H100})
+            file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, m.extra Mod &H100, m.extra \ &H100, _
+                                      m.unused Mod &H100, m.unused \ &H100})
             file.AddRange(Pointers.ToArray(m.ptr))
         Next
         file.AddRange(New Byte() {0, 0})

@@ -65,8 +65,8 @@
     Public Overrides Function ToText(ByVal Objs As System.Collections.Generic.List(Of NRMonster)) As String
         Dim str As String = "2"
         For Each m As NRMonster In Objs
-            str &= m.X.ToString("X4") & m.Y.ToString("X4") & m.unused1.ToString("X4") & _
-                   m.unused2.ToString("X4") & m.ptr.ToString("X8")
+            str &= m.X.ToString("X4") & m.Y.ToString("X4") & m.extra.ToString("X4") & _
+                   m.unused.ToString("X4") & m.ptr.ToString("X8")
         Next
         Return str
     End Function

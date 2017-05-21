@@ -1,8 +1,8 @@
 ﻿Public Class NRMonster
     Inherits LevelObj
 
-    Public unused1 As UShort
-    Public unused2 As UShort
+    Public extra As UShort
+    Public unused As UShort
     Public _ptr As Integer
     Public Property ptr As Integer
         Get
@@ -28,11 +28,11 @@
 
     End Sub
 
-    Public Sub New(ByVal x As UShort, ByVal y As UShort, ByVal unused1 As UShort, ByVal unused2 As UShort, ByVal ptr As Integer)
+    Public Sub New(ByVal x As UShort, ByVal y As UShort, ByVal extra As UShort, ByVal unused As UShort, ByVal ptr As Integer)
         Me.x = x
         Me.y = y
-        Me.unused1 = unused1
-        Me.unused2 = unused2
+        Me.extra = extra
+        Me.unused = unused
         _ptr = ptr
         UpdateIdx()
     End Sub
@@ -40,8 +40,8 @@
     Public Sub New(ByVal m As NRMonster)
         Me.x = m.x
         Me.y = m.y
-        Me.unused1 = m.unused1
-        Me.unused2 = m.unused2
+        Me.extra = m.extra
+        Me.unused = m.unused
         _ptr = m.ptr
         UpdateIdx()
     End Sub

@@ -8,7 +8,7 @@
 
     Public ReadOnly Property GetHeight As Integer Implements IPropCtrl.GetHeight
         Get
-            Return 100
+            Return 129
         End Get
     End Property
 
@@ -19,6 +19,7 @@
     Public Sub SetEnabled(ByVal enabled As Boolean) Implements IPropCtrl.SetEnabled
         nudX.Enabled = enabled
         nudY.Enabled = enabled
+        nudExtra.Enabled = enabled
         addr.Enabled = enabled
     End Sub
 
@@ -28,7 +29,8 @@
             ml = UndoManager.CreateList(m)
             init = True
             nudX.Value = m.x
-            nudY.Value = m.y
+            nudY.Value = m.Y
+            nudExtra.Value = m.extra
             addr.Value = m.ptr
             init = False
         End If
@@ -42,6 +44,11 @@
     Private Sub nudY_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles nudY.ValueChanged
         If init Then Return
         ed.EdControl.UndoMgr.Do(New MoveNRMAction(ml, 0, nudY.Value - m.y, 1))
+    End Sub
+
+    Private Sub nudExtra_ValueChanged(sender As System.Object, e As System.EventArgs) Handles nudExtra.ValueChanged
+        If init Then Return
+        ed.EdControl.UndoMgr.Do(New ChangeNRMExtraAction(ml, nudExtra.Value))
     End Sub
 
     Private Sub addr_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles addr.ValueChanged
