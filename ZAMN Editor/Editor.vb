@@ -345,7 +345,12 @@
     End Sub
 
     Private Sub HelpAbout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpAbout.Click
-        MsgBox("ZAMN Editor Beta v" & Application.ProductVersion & Environment.NewLine & "Icons are from or modified from Silk Icon set. http://www.famfamfam.com/lab/icons/silk/" & Environment.NewLine & Environment.NewLine & "Copyright © 2017 Piranhaplant", MsgBoxStyle.Information, "About")
+        MsgBox("ZAMN Editor Beta v" & Application.ProductVersion & Environment.NewLine & Environment.NewLine & _
+               "Credits:" & Environment.NewLine & _
+               "Programming: Piranhaplant" & Environment.NewLine & _
+               "Tileset suggest lists: Droter" & Environment.NewLine & _
+               "Icons: Silk Icon set http://www.famfamfam.com/lab/icons/silk/" & Environment.NewLine & Environment.NewLine & _
+               "Copyright © 2017 Piranhaplant", MsgBoxStyle.Information, "About")
     End Sub
 
     Private Sub Tools_ItemClicked(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles Tools.ItemClicked

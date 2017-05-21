@@ -24,9 +24,11 @@ Partial Class Editor
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Editor))
         Me.TSContainer = New System.Windows.Forms.ToolStripContainer()
+        Me.Tabs = New ZAMNEditor.Tabs()
         Me.MainMenu = New System.Windows.Forms.MenuStrip()
         Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.FileOpen = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RecentROMs = New ZAMNEditor.RecentFilesList()
         Me.FileOpenLevel = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.FileSave = New System.Windows.Forms.ToolStripMenuItem()
@@ -67,6 +69,8 @@ Partial Class Editor
         Me.toolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
         Me.LevelEditTitle = New System.Windows.Forms.ToolStripMenuItem()
         Me.LevelSettingsM = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
+        Me.LevelSaveAsPNG = New System.Windows.Forms.ToolStripMenuItem()
         Me.LevelDebugTools = New System.Windows.Forms.ToolStripMenuItem()
         Me.DebugCopyTileset = New System.Windows.Forms.ToolStripMenuItem()
         Me.DebugFillSelection = New System.Windows.Forms.ToolStripMenuItem()
@@ -118,10 +122,6 @@ Partial Class Editor
         Me.ImportLevel = New System.Windows.Forms.OpenFileDialog()
         Me.ExportLevel = New System.Windows.Forms.SaveFileDialog()
         Me.OpenEmulator = New System.Windows.Forms.OpenFileDialog()
-        Me.LevelSaveAsPNG = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator13 = New System.Windows.Forms.ToolStripSeparator()
-        Me.Tabs = New ZAMNEditor.Tabs()
-        Me.RecentROMs = New ZAMNEditor.RecentFilesList()
         Me.SavePNG = New System.Windows.Forms.SaveFileDialog()
         Me.TSContainer.ContentPanel.SuspendLayout()
         Me.TSContainer.TopToolStripPanel.SuspendLayout()
@@ -163,6 +163,16 @@ Partial Class Editor
         Me.TSContainer.TopToolStripPanel.Controls.Add(Me.Tools)
         Me.TSContainer.TopToolStripPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         '
+        'Tabs
+        '
+        Me.Tabs.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Tabs.Location = New System.Drawing.Point(0, 0)
+        Me.Tabs.Name = "Tabs"
+        Me.Tabs.Size = New System.Drawing.Size(625, 386)
+        Me.Tabs.TabIndex = 1
+        Me.Tabs.Text = "Tabs1"
+        Me.Tabs.Visible = False
+        '
         'MainMenu
         '
         Me.MainMenu.Dock = System.Windows.Forms.DockStyle.None
@@ -190,6 +200,16 @@ Partial Class Editor
         Me.FileOpen.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
         Me.FileOpen.Size = New System.Drawing.Size(173, 22)
         Me.FileOpen.Text = "&Open"
+        '
+        'RecentROMs
+        '
+        Me.RecentROMs.Enabled = False
+        Me.RecentROMs.Items = CType(resources.GetObject("RecentROMs.Items"), System.Collections.Generic.List(Of String))
+        Me.RecentROMs.MaxItems = 5
+        Me.RecentROMs.MaxLength = 60
+        Me.RecentROMs.Name = "RecentROMs"
+        Me.RecentROMs.Size = New System.Drawing.Size(173, 22)
+        Me.RecentROMs.Text = "&Recent ROMs"
         '
         'FileOpenLevel
         '
@@ -395,6 +415,7 @@ Partial Class Editor
         '
         'ViewNextFrame
         '
+        Me.ViewNextFrame.Enabled = False
         Me.ViewNextFrame.Name = "ViewNextFrame"
         Me.ViewNextFrame.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.N), System.Windows.Forms.Keys)
         Me.ViewNextFrame.Size = New System.Drawing.Size(198, 22)
@@ -402,6 +423,7 @@ Partial Class Editor
         '
         'ViewRestartAnimation
         '
+        Me.ViewRestartAnimation.Enabled = False
         Me.ViewRestartAnimation.Name = "ViewRestartAnimation"
         Me.ViewRestartAnimation.Size = New System.Drawing.Size(198, 22)
         Me.ViewRestartAnimation.Text = "&Restart Animation"
@@ -478,6 +500,18 @@ Partial Class Editor
         Me.LevelSettingsM.Name = "LevelSettingsM"
         Me.LevelSettingsM.Size = New System.Drawing.Size(156, 22)
         Me.LevelSettingsM.Text = "&Settings..."
+        '
+        'ToolStripSeparator13
+        '
+        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(153, 6)
+        '
+        'LevelSaveAsPNG
+        '
+        Me.LevelSaveAsPNG.Enabled = False
+        Me.LevelSaveAsPNG.Name = "LevelSaveAsPNG"
+        Me.LevelSaveAsPNG.Size = New System.Drawing.Size(156, 22)
+        Me.LevelSaveAsPNG.Text = "Save as PNG..."
         '
         'LevelDebugTools
         '
@@ -872,38 +906,6 @@ Partial Class Editor
         'OpenEmulator
         '
         Me.OpenEmulator.Filter = "Executable Files (*.exe)|*.exe|All Files (*.*)|*.*"
-        '
-        'LevelSaveAsPNG
-        '
-        Me.LevelSaveAsPNG.Enabled = False
-        Me.LevelSaveAsPNG.Name = "LevelSaveAsPNG"
-        Me.LevelSaveAsPNG.Size = New System.Drawing.Size(156, 22)
-        Me.LevelSaveAsPNG.Text = "Save as PNG..."
-        '
-        'ToolStripSeparator13
-        '
-        Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
-        Me.ToolStripSeparator13.Size = New System.Drawing.Size(153, 6)
-        '
-        'Tabs
-        '
-        Me.Tabs.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Tabs.Location = New System.Drawing.Point(0, 0)
-        Me.Tabs.Name = "Tabs"
-        Me.Tabs.Size = New System.Drawing.Size(625, 386)
-        Me.Tabs.TabIndex = 1
-        Me.Tabs.Text = "Tabs1"
-        Me.Tabs.Visible = False
-        '
-        'RecentROMs
-        '
-        Me.RecentROMs.Enabled = False
-        Me.RecentROMs.Items = CType(resources.GetObject("RecentROMs.Items"), System.Collections.Generic.List(Of String))
-        Me.RecentROMs.MaxItems = 5
-        Me.RecentROMs.MaxLength = 60
-        Me.RecentROMs.Name = "RecentROMs"
-        Me.RecentROMs.Size = New System.Drawing.Size(173, 22)
-        Me.RecentROMs.Text = "&Recent ROMs"
         '
         'SavePNG
         '
