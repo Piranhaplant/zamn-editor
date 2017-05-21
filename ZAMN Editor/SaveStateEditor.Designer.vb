@@ -30,7 +30,8 @@ Partial Class SaveStateEditor
         '
         'btnOK
         '
-        Me.btnOK.Location = New System.Drawing.Point(120, 265)
+        Me.btnOK.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnOK.Location = New System.Drawing.Point(120, 273)
         Me.btnOK.Name = "btnOK"
         Me.btnOK.Size = New System.Drawing.Size(93, 23)
         Me.btnOK.TabIndex = 0
@@ -39,7 +40,9 @@ Partial Class SaveStateEditor
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(120, 294)
+        Me.btnCancel.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.btnCancel.Location = New System.Drawing.Point(120, 302)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(93, 23)
         Me.btnCancel.TabIndex = 1
@@ -48,7 +51,8 @@ Partial Class SaveStateEditor
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(120, 323)
+        Me.btnSave.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSave.Location = New System.Drawing.Point(120, 331)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(93, 23)
         Me.btnSave.TabIndex = 2
@@ -57,18 +61,22 @@ Partial Class SaveStateEditor
         '
         'lblNote
         '
-        Me.lblNote.Location = New System.Drawing.Point(12, 349)
+        Me.lblNote.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblNote.Location = New System.Drawing.Point(12, 357)
         Me.lblNote.Name = "lblNote"
         Me.lblNote.Size = New System.Drawing.Size(201, 62)
         Me.lblNote.TabIndex = 3
         Me.lblNote.Text = "Note: This will overwrite save state slot 1 and you must load from stot 1 when th" & _
-            "e emulator starts. It currently works with bsnes v084 32bit."
+    "e emulator starts. It currently works with bsnes v084 32bit."
         '
         'SaveStateEditor
         '
+        Me.AcceptButton = Me.btnOK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(225, 410)
+        Me.CancelButton = Me.btnCancel
+        Me.ClientSize = New System.Drawing.Size(225, 418)
         Me.Controls.Add(Me.lblNote)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.btnCancel)

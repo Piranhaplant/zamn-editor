@@ -42,9 +42,11 @@
     Public Shared PltAnim As Integer() = {-1, &H20AD, &H20EF, &H2137, &H2222, &H2264}
     Public Shared Boss As Integer() = {-1, &H1072C, &H11569, &H128BB, &H128C3, &H12B95, &H157CF, &H1AD33}
 
-    Public Shared RAMStartBsnes As Integer = &H2A67
-    Public Shared RAMLevelNum As Integer = &H1E7C
-    Public Shared RAMWeaponQty As Integer = &H1CCC
+    Public Const RAMStartBsnes As Integer = &H2A67
+    Public Const RAMLevelNum As Integer = &H1E7C
+    Public Const RAMWeaponQty As Integer = &H1CCC
+    Public Const RAMStartingVictims As Integer = &H1D50
+    Public Const RAMRemainingVictims As Integer = &H1D52
 
     Public Shared Function ReadPointer(ByVal s As IO.Stream) As Integer
         Dim part2 As Integer = s.ReadByte() + s.ReadByte() * &H100
