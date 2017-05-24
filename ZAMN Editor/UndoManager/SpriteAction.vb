@@ -19,6 +19,7 @@ Public Class AddSpriteAction
 
     Public Overrides Sub Undo()
         level.objects.Remove(sprites)
+        UpdateSelection()
     End Sub
 
     Public Overrides Sub Redo()
@@ -52,6 +53,7 @@ Public Class RemoveSpriteAction
 
     Public Overrides Sub Redo()
         level.objects.Remove(sprites)
+        UpdateSelection()
     End Sub
 
     Public Overrides Function ToString() As String

@@ -72,6 +72,9 @@
     Public Overridable Function CanCopy() As Boolean
         Return True
     End Function
+    Public Overridable Sub UpdateSelection()
+        'Tools should override this function and remove any object from the selection if they do not exist in the level anymore
+    End Sub
 
     Private Sub TilePicker_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TilePicker.ValueChanged
         If active Then TileChanged()

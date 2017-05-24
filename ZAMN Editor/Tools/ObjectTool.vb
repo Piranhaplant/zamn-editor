@@ -369,6 +369,17 @@
         End If
     End Function
 
+    Public Overrides Sub UpdateSelection()
+        Dim i As Integer = 0
+        While i < selectedObjs.Count
+            If Not levelList.Contains(selectedObjs(i)) Then
+                selectedObjs.RemoveAt(i)
+            Else
+                i += 1
+            End If
+        End While
+    End Sub
+
     Public Sub UpdateProperties()
         If selectedObjs.Count = 1 Then
             Browser.SetObject(selectedObj)

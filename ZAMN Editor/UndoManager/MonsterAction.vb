@@ -21,6 +21,7 @@ Public Class AddMonsterAction
         For Each m As Monster In Monsters
             level.objects.Remove(m)
         Next
+        UpdateSelection()
     End Sub
 
     Public Overrides Sub Redo()
@@ -55,6 +56,7 @@ Public Class RemoveMonsterAction
         For Each m As Monster In Monsters
             level.objects.Remove(m)
         Next
+        UpdateSelection()
     End Sub
 
     Public Overrides Function ToString() As String

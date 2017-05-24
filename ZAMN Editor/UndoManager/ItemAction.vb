@@ -21,6 +21,7 @@ Public Class AddItemAction
         For Each i As Item In items
             level.objects.Remove(i)
         Next
+        UpdateSelection()
     End Sub
 
     Public Overrides Sub Redo()
@@ -55,6 +56,7 @@ Public Class RemoveItemAction
         For Each i As Item In items
             level.objects.Remove(i)
         Next
+        UpdateSelection()
     End Sub
 
     Public Overrides Function ToString() As String

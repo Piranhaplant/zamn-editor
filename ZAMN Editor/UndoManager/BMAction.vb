@@ -21,6 +21,7 @@ Public Class AddBMAction
         For Each m As BossMonster In BossMonsters
             level.objects.Remove(m)
         Next
+        UpdateSelection()
     End Sub
 
     Public Overrides Sub Redo()
@@ -55,6 +56,7 @@ Public Class RemoveBMAction
         For Each m As BossMonster In BossMonsters
             level.objects.Remove(m)
         Next
+        UpdateSelection()
     End Sub
 
     Public Overrides Function ToString() As String

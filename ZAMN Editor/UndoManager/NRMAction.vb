@@ -21,6 +21,7 @@ Public Class AddNRMAction
         For Each m As NRMonster In NRMs
             level.objects.Remove(m)
         Next
+        UpdateSelection()
     End Sub
 
     Public Overrides Sub Redo()
@@ -55,6 +56,7 @@ Public Class RemoveNRMAction
         For Each m As NRMonster In NRMs
             level.objects.Remove(m)
         Next
+        UpdateSelection()
     End Sub
 
     Public Overrides Function ToString() As String
