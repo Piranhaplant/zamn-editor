@@ -133,7 +133,7 @@ Public Class ChangeMonsterTypeAction
 
     Public Sub New(ByVal monsters As List(Of Monster), ByVal ptr As Integer)
         MyBase.New(monsters)
-        If monsters.Count = 1 And monsters(0).ptr = newptr Then
+        If monsters.Count = 1 And monsters(0).ptr = ptr Then
             cancelAction = True
             Return
         End If

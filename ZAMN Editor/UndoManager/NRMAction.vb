@@ -133,7 +133,7 @@ Public Class ChangeNRMTypeAction
 
     Public Sub New(ByVal NRMs As List(Of NRMonster), ByVal ptr As Integer)
         MyBase.New(NRMs)
-        If NRMs.Count = 1 And NRMs(0).ptr = newptr Then
+        If NRMs.Count = 1 And NRMs(0).ptr = ptr Then
             cancelAction = True
             Return
         End If
@@ -182,7 +182,7 @@ Public Class ChangeNRMExtraAction
 
     Public Sub New(ByVal NRMs As List(Of NRMonster), ByVal value As Integer)
         MyBase.New(NRMs)
-        If NRMs.Count = 1 And NRMs(0).extra = newvalue Then
+        If NRMs.Count = 1 And NRMs(0).extra = value Then
             cancelAction = True
             Return
         End If
