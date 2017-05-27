@@ -23,7 +23,7 @@
 
     Public Sub New(ByVal ed As Editor)
         MyBase.New(ed)
-        moveTmr.Interval = 10
+        moveTmr.Interval = 1
     End Sub
 
     Public Event DonePasting(ByVal sender As Object, ByVal e As EventArgs)
@@ -163,7 +163,7 @@
             yPosT = yPos \ 64
         Else
             Dim px As Integer = xPos, py As Integer = yPos
-            xPosT += 1
+            xPosT += 10
             xPos = DragXOff + deltaX * xPosT
             yPos = DragYOff + deltaY * xPosT
             If deltaX > 0 Then

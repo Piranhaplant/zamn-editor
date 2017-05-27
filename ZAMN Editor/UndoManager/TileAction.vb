@@ -157,6 +157,8 @@ Public Class PasteTilesAction
     End Sub
 
     Public Overrides Sub AfterSetEdControl()
+        width = Math.Min(width, EdControl.lvl.Width - 1)
+        height = Math.Min(height, EdControl.lvl.Height - 1)
         For yp As Integer = 0 To height
             For xp As Integer = 0 To width
                 oldTiles(xp, yp) = level.Tiles(xp + x, yp + y)
