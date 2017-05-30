@@ -7,6 +7,9 @@
         For Each m As NRMonster In nrms
             Me.NRMs.Add(m)
         Next
+        If nrms.Count = 0 Then
+            cancelAction = True
+        End If
     End Sub
 End Class
 

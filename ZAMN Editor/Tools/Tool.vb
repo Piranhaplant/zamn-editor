@@ -52,7 +52,7 @@
 
     End Sub
     Public Overridable Sub Refresh()
-
+        ed.CheckCopy()
     End Sub
     Public Overridable Sub RemoveEdCtrl(ByVal e As LvlEdCtrl)
 

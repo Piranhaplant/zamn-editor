@@ -7,6 +7,9 @@
         For Each i As Item In items
             Me.items.Add(i)
         Next
+        If items.Count = 0 Then
+            cancelAction = True
+        End If
     End Sub
 End Class
 

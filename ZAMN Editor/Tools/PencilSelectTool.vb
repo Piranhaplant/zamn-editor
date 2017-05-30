@@ -46,6 +46,7 @@
 
     Public Overrides Sub Refresh()
         selection = ed.EdControl.selection
+        ed.CheckCopy()
     End Sub
 
     Public Overrides Sub TileChanged()

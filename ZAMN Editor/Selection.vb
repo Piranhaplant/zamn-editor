@@ -52,7 +52,6 @@
         curX = x
         curY = y
         erasing = remove
-        exists = True
         curRectExists = False
     End Sub
 
@@ -69,6 +68,7 @@
         Else
             curY = YStart
         End If
+        exists = True
         curRectExists = True
         curSelectPts = selectPts.Clone()
         ApplySelectionTo(curSelectPts)

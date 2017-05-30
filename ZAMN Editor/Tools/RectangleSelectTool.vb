@@ -20,8 +20,7 @@
     Public Overrides Sub MouseDown(ByVal e As System.Windows.Forms.MouseEventArgs)
         Dim nx As Integer = e.X \ 64
         Dim ny As Integer = e.Y \ 64
-        If e.Button = MouseButtons.Left And nx < ed.EdControl.lvl.Width _
-        And ny < ed.EdControl.lvl.Height And nx >= 0 And ny >= 0 Then
+        If e.Button = MouseButtons.Left And nx < ed.EdControl.lvl.Width And ny < ed.EdControl.lvl.Height And nx >= 0 And ny >= 0 Then
             If Control.ModifierKeys <> Keys.Shift And Control.ModifierKeys <> Keys.Alt Then
                 selection.Clear()
                 ed.SetCopy(False)
@@ -66,6 +65,7 @@
 
     Public Overrides Sub Refresh()
         selection = ed.EdControl.selection
+        ed.CheckCopy()
     End Sub
 
     Public Overrides Sub TileChanged()

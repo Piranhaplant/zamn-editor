@@ -33,7 +33,7 @@
         Dim txt As String = ZAMNClip.FromClip(Clipboard.GetText)
         If txt.StartsWith("T") Then
             txt = Mid(txt, 2)
-            ed.SelectAll(False)
+            ed.EdControl.selection.Clear()
             width = CInt("&H" & Mid(txt, 1, 2))
             height = CInt("&H" & Mid(txt, 3, 2))
             ReDim NewTiles(width - 1, height - 1)

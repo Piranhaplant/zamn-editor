@@ -43,6 +43,7 @@
             allSelectedObjs.Add(ed.EdControl, New List(Of T))
         End If
         selectedObjs = allSelectedObjs(ed.EdControl)
+        ed.SetCopy(selectedObjs.Count > 0)
     End Sub
 
     Public Sub UpdateCaptions()
@@ -378,6 +379,7 @@
                 i += 1
             End If
         End While
+        ed.SetCopy(selectedObjs.Count > 0)
     End Sub
 
     Public Sub UpdateProperties()

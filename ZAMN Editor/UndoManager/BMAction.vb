@@ -7,6 +7,9 @@
         For Each m As BossMonster In bossmonsters
             Me.BossMonsters.Add(m)
         Next
+        If bossmonsters.Count = 0 Then
+            cancelAction = True
+        End If
     End Sub
 End Class
 

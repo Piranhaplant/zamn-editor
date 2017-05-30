@@ -7,6 +7,9 @@
         For Each v As Victim In victims
             Me.victims.Add(v)
         Next
+        If victims.Count = 0 Then
+            cancelAction = True
+        End If
     End Sub
 End Class
 

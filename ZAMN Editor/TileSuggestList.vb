@@ -1,9 +1,9 @@
 ﻿Public Class TileSuggestList
-    Public Shared Lists As Byte()() = {My.Resources.Grass, My.Resources.Mall, My.Resources.Pyramid, My.Resources.Castle, My.Resources.Office, My.Resources.GrassR}
+    Public Shared Lists As Byte()() = {My.Resources.Grass, My.Resources.Mall, My.Resources.Pyramid, My.Resources.Castle, My.Resources.Office, My.Resources.GrassR, My.Resources.Mall, My.Resources.Pyramid, My.Resources.Castle, My.Resources.Office}
     Public Shared Data As New List(Of List(Of List(Of List(Of Byte))))
     Public Shared ConnectsTo As New List(Of List(Of List(Of List(Of Integer))))
     Public Shared AllDataLists As New List(Of List(Of List(Of Byte)))
-    Public Shared ProbFiles As Byte()() = {My.Resources.GrassProb, My.Resources.Mall, My.Resources.Pyramid, My.Resources.Castle, My.Resources.Office}
+    Public Shared ProbFiles As Byte()() = {My.Resources.GrassProb, My.Resources.GrassProb, My.Resources.GrassProb, My.Resources.GrassProb, My.Resources.GrassProb}
     Public Shared Probability As Double()()
 
     Public Shared Sub LoadAll()

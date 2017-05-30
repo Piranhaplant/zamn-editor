@@ -483,6 +483,8 @@
         RedoTool.Enabled = False
         CopyTool.Enabled = False
         CutTool.Enabled = False
+        EditCopy.Enabled = False
+        EditCut.Enabled = False
         EmulatorFromLevel.Enabled = False
     End Sub
 

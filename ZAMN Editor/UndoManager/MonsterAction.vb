@@ -7,6 +7,9 @@
         For Each m As Monster In monsters
             Me.Monsters.Add(m)
         Next
+        If monsters.Count = 0 Then
+            cancelAction = True
+        End If
     End Sub
 End Class
 
