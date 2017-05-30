@@ -54,13 +54,15 @@
     End Sub
 
     Public Overrides Sub MouseUp(ByVal e As System.Windows.Forms.MouseEventArgs)
-        pX = -1
-        pY = -1
-        selection.ApplySelection()
-        ed.EdControl.UpdateSelection()
-        ed.EdControl.UndoMgr.merge = False
-        selecting = False
-        ResetStatus()
+        If selecting Then
+            pX = -1
+            pY = -1
+            selection.ApplySelection()
+            ed.EdControl.UpdateSelection()
+            ed.EdControl.UndoMgr.merge = False
+            selecting = False
+            ResetStatus()
+        End If
     End Sub
 
     Public Overrides Sub Refresh()
