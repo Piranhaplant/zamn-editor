@@ -7,6 +7,7 @@
     Public Overloads Function ShowDialog(ByVal ed As Editor) As DialogResult
         Me.lvl = ed.EdControl.lvl
         Me.ed = ed
+        tileAnim = Nothing
         'Tiles
         addrTiles.Value = lvl.tileset.address
         cboTiles.SelectedIndex = Array.IndexOf(Pointers.Tilesets, lvl.tileset.address)
@@ -125,11 +126,12 @@
             End If
             'Tile Animation
             If m.ptr = Pointers.SpBossMonsters(1) Then
-                btnDeleteTileAnim.Enabled = True
-                btnExportTileAnim.Enabled = True
                 tileAnim = m.exData
             End If
         Next
+
+        btnDeleteTileAnim.Enabled = tileAnim IsNot Nothing
+        btnExportTileAnim.Enabled = tileAnim IsNot Nothing
 
         Return Me.ShowDialog()
     End Function

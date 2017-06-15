@@ -29,7 +29,7 @@
         End If
 
         Dim startAddr As Long = s.Position
-        Debug.WriteLine(name + ": 0x" + Hex(startAddr))
+        Debug.WriteLine(num & " " & name & ": 0x" + Hex(startAddr))
         If import Then
             Dim tiles As Integer = Pointers.ReadPointer(s)
             s.Seek(4, IO.SeekOrigin.Current)
