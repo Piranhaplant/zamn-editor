@@ -42,22 +42,25 @@ Public Class TileAnimation
         Next
 
         For Each anim As List(Of UShort) In animations
-            Dim startTile As UShort = anim(0)
             Dim tilePosList As New List(Of TilePos)
 
-            For t As Integer = 0 To &HFF
-                For m As Integer = t * &H80 To t * &H80 + &H7F Step 2
-                    Dim g As Integer = tileset.map16(m)
-                    If (tileset.map16(m + 1) And 1) = 1 Then
-                        g += &H100
-                    End If
-                    If g = startTile Then
-                        Dim x As Integer = ((m Mod &H80) \ 2) Mod 8
-                        Dim y As Integer = ((m Mod &H80) \ 2) \ 8
-                        tilePosList.Add(New TilePos(t, x, y))
-                    End If
+            If anim.Count > 0 Then
+                Dim startTile As UShort = anim(0)
+
+                For t As Integer = 0 To &HFF
+                    For m As Integer = t * &H80 To t * &H80 + &H7F Step 2
+                        Dim g As Integer = tileset.map16(m)
+                        If (tileset.map16(m + 1) And 1) = 1 Then
+                            g += &H100
+                        End If
+                        If g = startTile Then
+                            Dim x As Integer = ((m Mod &H80) \ 2) Mod 8
+                            Dim y As Integer = ((m Mod &H80) \ 2) \ 8
+                            tilePosList.Add(New TilePos(t, x, y))
+                        End If
+                    Next
                 Next
-            Next
+            End If
             tilePositions.Add(tilePosList)
         Next
     End Sub

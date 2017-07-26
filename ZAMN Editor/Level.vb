@@ -167,7 +167,7 @@
                         If s.Position > curaddr Then
                             Do
                                 value = s.ReadByte + s.ReadByte * &H100
-                                If value < 0 Then
+                                If value < 0 Or newData.Count > &H200 Then
                                     newData.Clear()
                                     newData.Add(0)
                                     newData.Add(0)
@@ -181,6 +181,7 @@
                                 If passed And count = 0 Then Exit Do
                             Loop
                             objects.Add(New BossMonster(ptr, newData.ToArray()))
+                            Debug.WriteLine("Tile animation size: " + newData.Count.ToString())
                         End If
                 End Select
                 s.Seek(curaddr + 4, IO.SeekOrigin.Begin)
