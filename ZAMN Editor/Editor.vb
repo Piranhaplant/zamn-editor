@@ -273,7 +273,11 @@
     Private Sub LevelImport_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LevelImport.Click
         If ImportLevel.ShowDialog = Windows.Forms.DialogResult.OK Then
             Dim fs As New IO.FileStream(ImportLevel.FileName, IO.FileMode.Open, IO.FileAccess.Read)
-            Dim newLvl As New Level(fs, EdControl.lvl.name, EdControl.lvl.num, True, New IO.FileStream(r.path, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.Read))
+            Dim romStream As New IO.FileStream(r.path, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.Read)
+            Dim newLvl As New Level(fs, EdControl.lvl.name, EdControl.lvl.num, True, romStream)
+            fs.Close()
+            romStream.Close()
+
             If newLvl.Width * newLvl.Height > EdControl.lvl.Width * EdControl.lvl.Height Then
                 If MsgBox("You are importing a level with a background that is bigger than the current level. This will overwrite background data from a different level. Are you sure you want to continue?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
                     Return
@@ -290,6 +294,7 @@
             Dim data As Byte() = EdControl.lvl.ToFile()
             Dim fs As New IO.FileStream(ExportLevel.FileName, IO.FileMode.Create, IO.FileAccess.Write, IO.FileShare.Read)
             fs.Write(data, 0, data.Length)
+            fs.Close()
         End If
     End Sub
 
@@ -303,7 +308,9 @@
         If Not txt.StartsWith("L") Then Return
         Dim data As Byte() = ZAMNClip.FromText(Mid(txt, 2))
         Dim fs As New ByteArrayStream(data)
-        Dim newLvl As New Level(fs, EdControl.lvl.name, EdControl.lvl.num, True, New IO.FileStream(r.path, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.Read))
+        Dim romStream As New IO.FileStream(r.path, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.Read)
+        Dim newLvl As New Level(fs, EdControl.lvl.name, EdControl.lvl.num, True, romStream)
+        romStream.Close()
         If newLvl.Width * newLvl.Height > EdControl.lvl.Width * EdControl.lvl.Height Then
             If MsgBox("You are pasting a level with a background that is bigger than the current level. This will overwrite background data from a different level. Are you sure you want to continue?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
                 Return
@@ -721,6 +728,7 @@
         Dim s As New IO.FileStream(r.path, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.Read)
         s.Seek(address, IO.SeekOrigin.Begin)
         Dim data() As Byte = ZAMNCompress.Decompress(s)
+        s.Close()
 
         Dim save As New SaveFileDialog
         save.Filter = "Binary files (*.bin)|*.bin|All Files (*.*)|*.*"

@@ -144,7 +144,9 @@ Public Class ROM
     Public Function GetLevel(ByVal num As Integer, ByVal name As String) As Level
         Dim s As New FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read)
         GotoLvlPtr(num, s)
-        Return New Level(s, name, num)
+        Dim l As New Level(s, name, num)
+        s.Close()
+        Return l
     End Function
 
     Public Function GetAllLvlPtrs(ByVal s As Stream) As DList(Of Integer, Integer)
@@ -165,6 +167,7 @@ Public Class ROM
             s.Seek(ptr, SeekOrigin.Begin)
             FixTileAnim(s)
         Next
+        s.Close()
     End Sub
 
     Public Sub FixTileAnim(ByVal s As Stream)
