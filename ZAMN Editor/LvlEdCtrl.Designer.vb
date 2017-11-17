@@ -31,6 +31,7 @@ Partial Class LvlEdCtrl
         Me.Status = New System.Windows.Forms.ToolStripStatusLabel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.UpdateTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.AutoSaveTimer = New System.Windows.Forms.Timer(Me.components)
         CType(Me.canvas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -129,6 +130,11 @@ Partial Class LvlEdCtrl
         Me.UpdateTimer.Enabled = True
         Me.UpdateTimer.Interval = 1
         '
+        'AutoSaveTimer
+        '
+        Me.AutoSaveTimer.Enabled = True
+        Me.AutoSaveTimer.Interval = 300000
+        '
         'LvlEdCtrl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -157,5 +163,6 @@ Partial Class LvlEdCtrl
     Friend WithEvents Status As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents UpdateTimer As System.Windows.Forms.Timer
+    Friend WithEvents AutoSaveTimer As System.Windows.Forms.Timer
 
 End Class

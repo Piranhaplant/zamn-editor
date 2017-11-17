@@ -117,7 +117,7 @@ Public Class ROM
         s.Write(rest, 0, rest.Length)
     End Sub
 
-    Public Function GetLevelTitle(ByVal s As Stream, ByVal ptr As Integer)
+    Public Function GetLevelTitle(ByVal s As Stream, ByVal ptr As Integer) As String
         s.Seek(ptr + &H36, SeekOrigin.Begin)
         Pointers.GoToRelativePointer(s, &H9F)
         Dim TP1 As New TitlePage(s)

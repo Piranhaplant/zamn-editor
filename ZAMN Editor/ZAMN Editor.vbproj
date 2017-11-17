@@ -83,6 +83,7 @@
     <Compile Include="AddressUpDown.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Backups.vb" />
     <Compile Include="BossMonster.vb" />
     <Compile Include="ByteArrayStream.vb" />
     <Compile Include="ClearButton.Designer.vb">

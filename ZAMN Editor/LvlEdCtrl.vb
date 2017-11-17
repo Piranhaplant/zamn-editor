@@ -388,4 +388,10 @@
     Private Sub SplitContainer1_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles SplitContainer1.GotFocus
         canvas.Focus()
     End Sub
+
+    Private Sub AutoSaveTimer_Tick(sender As System.Object, e As System.EventArgs) Handles AutoSaveTimer.Tick
+        If UndoMgr.Dirty Then
+            Backups.BackupLevel(lvl)
+        End If
+    End Sub
 End Class

@@ -33,6 +33,7 @@
             LoadROM(My.Application.CommandLineArgs(0))
         End If
         ViewAnimate.Checked = My.Settings.Animate
+        Backups.CheckForBackupsOnStart()
     End Sub
 
     Private Sub Editor_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
@@ -53,6 +54,7 @@
             My.Settings.Size = Me.Size
         End If
         My.Settings.RecentROMs = ListToString(RecentROMs.Items)
+        Backups.RemoveAllBackupsOnExit()
     End Sub
 
     Private Sub FileOpen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileOpen.Click, OpenTool.Click
@@ -125,6 +127,7 @@
 
     Private Sub FileSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles FileSave.Click, SaveTool.Click
         r.SaveLevel(EdControl.lvl)
+        Backups.RemoveBackup(EdControl.lvl)
         EdControl.UndoMgr.Clean()
     End Sub
 
@@ -472,10 +475,13 @@
             e.cancel = True
             Return
         End If
-        openLevels.Remove(DirectCast(e.Tab.Controls(0), LvlEdCtrl).lvl.num)
+        Dim lvl As Level = DirectCast(e.Tab.Controls(0), LvlEdCtrl).lvl
+        openLevels.Remove(lvl.num)
+        Backups.RemoveBackup(lvl)
         For Each t As Tool In EditingTools
             t.RemoveEdCtrl(e.Tab.Controls(0))
         Next
+        e.Tab.Controls(0).Dispose()
     End Sub
 
     Private Sub Tabs_TabsClosed(ByVal sender As Object, ByVal e As System.EventArgs) Handles Tabs.TabsClosed
