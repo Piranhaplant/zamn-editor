@@ -131,6 +131,7 @@
         If lvl Is Nothing Then Return
         'If zoom > 1 Then
         g.InterpolationMode = Drawing2D.InterpolationMode.NearestNeighbor
+        g.PixelOffsetMode = Drawing2D.PixelOffsetMode.Half
         'End If
         If forEditor Then
             g.TranslateTransform(-HScrl.Value, -VScrl.Value)
