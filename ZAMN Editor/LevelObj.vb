@@ -21,7 +21,7 @@
     End Function
 
     Public Function Rect(ByVal gfx As LevelGFX) As Rectangle
-        Return New Rectangle(X, Y, Width(gfx), Height(gfx))
+        Return New Rectangle(X + 1, Y + 1, Width(gfx) - 1, Height(gfx) - 1)
     End Function
 
     Public MustOverride Function Clone() As LevelObj
