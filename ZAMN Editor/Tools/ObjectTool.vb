@@ -60,6 +60,9 @@
     End Sub
 
     Public Overrides Sub MouseDown(ByVal e As System.Windows.Forms.MouseEventArgs)
+        If e.Button <> MouseButtons.Left And e.Button <> MouseButtons.Right Then
+            Return
+        End If
         Dim addobj As Boolean = False
         For l As Integer = levelList.Count - 1 To 0 Step -1 'Find obj under mouse
             Dim o As T = levelList(l)
