@@ -1,4 +1,4 @@
-ZAMN Editor Beta v0.9.3
+ZAMN Editor Beta v0.9.5
 https://github.com/Piranhaplant/zamn-editor
 ______________________________________________________________________
 
