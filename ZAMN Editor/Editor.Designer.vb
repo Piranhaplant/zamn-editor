@@ -54,6 +54,7 @@ Partial Class Editor
         Me.ViewMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewGrid = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewPriority = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewRespawnAreas = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.ViewAnimate = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewNextFrame = New System.Windows.Forms.ToolStripMenuItem()
@@ -376,7 +377,7 @@ Partial Class Editor
         '
         'ViewMenu
         '
-        Me.ViewMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewGrid, Me.ViewPriority, Me.ToolStripSeparator12, Me.ViewAnimate, Me.ViewNextFrame, Me.ViewRestartAnimation, Me.toolStripSeparator7, Me.ViewZoomIn, Me.ViewZoomOut})
+        Me.ViewMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ViewGrid, Me.ViewPriority, Me.ViewRespawnAreas, Me.ToolStripSeparator12, Me.ViewAnimate, Me.ViewNextFrame, Me.ViewRestartAnimation, Me.toolStripSeparator7, Me.ViewZoomIn, Me.ViewZoomOut})
         Me.ViewMenu.Name = "ViewMenu"
         Me.ViewMenu.Size = New System.Drawing.Size(44, 20)
         Me.ViewMenu.Text = "&View"
@@ -398,6 +399,15 @@ Partial Class Editor
         Me.ViewPriority.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.H), System.Windows.Forms.Keys)
         Me.ViewPriority.Size = New System.Drawing.Size(198, 22)
         Me.ViewPriority.Text = "&Solid Tiles Only"
+        '
+        'ViewRespawnAreas
+        '
+        Me.ViewRespawnAreas.CheckOnClick = True
+        Me.ViewRespawnAreas.Enabled = False
+        Me.ViewRespawnAreas.Name = "ViewRespawnAreas"
+        Me.ViewRespawnAreas.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        Me.ViewRespawnAreas.Size = New System.Drawing.Size(198, 22)
+        Me.ViewRespawnAreas.Text = "Respawn Areas"
         '
         'ToolStripSeparator12
         '
@@ -656,18 +666,18 @@ Partial Class Editor
         '
         Me.HelpContents.Name = "HelpContents"
         Me.HelpContents.ShortcutKeys = System.Windows.Forms.Keys.F1
-        Me.HelpContents.Size = New System.Drawing.Size(150, 22)
+        Me.HelpContents.Size = New System.Drawing.Size(152, 22)
         Me.HelpContents.Text = "&Contents..."
         '
         'toolStripSeparator11
         '
         Me.toolStripSeparator11.Name = "toolStripSeparator11"
-        Me.toolStripSeparator11.Size = New System.Drawing.Size(147, 6)
+        Me.toolStripSeparator11.Size = New System.Drawing.Size(149, 6)
         '
         'HelpAbout
         '
         Me.HelpAbout.Name = "HelpAbout"
-        Me.HelpAbout.Size = New System.Drawing.Size(150, 22)
+        Me.HelpAbout.Size = New System.Drawing.Size(152, 22)
         Me.HelpAbout.Text = "&About"
         '
         'Tools
@@ -1032,5 +1042,6 @@ Partial Class Editor
     Friend WithEvents ToolStripSeparator13 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents LevelSaveAsPNG As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SavePNG As System.Windows.Forms.SaveFileDialog
+    Friend WithEvents ViewRespawnAreas As System.Windows.Forms.ToolStripMenuItem
 
 End Class

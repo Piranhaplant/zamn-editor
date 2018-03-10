@@ -11,6 +11,7 @@
 
     Public Grid As Boolean
     Public priority As Boolean
+    Public showRespawn As Boolean
     Public selection As Selection
     Public UndoMgr As UndoManager
     Public Active As Boolean
@@ -170,6 +171,10 @@
             g.DrawImage(lvl.GFX.VictimImages(m.index), m.X, m.Y)
             If m.index = 0 Then
                 g.DrawRectangle(Pens.Blue, m.Rect(lvl.GFX))
+            End If
+            If showRespawn Then
+                g.DrawRectangle(Pens.LightSteelBlue, m.X - m.radius \ 2 + 1, m.Y - m.radius \ 2 + 1,
+                                m.radius + lvl.GFX.VictimImages(m.index).Width - 1, m.radius + lvl.GFX.VictimImages(m.index).Height - 1)
             End If
         Next
         For Each m As BossMonster In lvl.objects.BossMonsters

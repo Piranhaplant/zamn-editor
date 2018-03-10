@@ -23,7 +23,7 @@
                                    New TileSelectTool(Me), New ItemTool(Me), New VictimTool(Me), New NRMonsterTool(Me), New MonsterTool(Me), New BossMonsterTool(Me),
                                    New SpriteTool(Me)}
         LevelItems = New ToolStripItem() {FileSave, SaveTool, EditPaste, PasteTool, EditSelectAll, EditSelectNone, ViewGrid, ViewNextFrame, ViewRestartAnimation, _
-                                          ViewPriority, LevelExport, LevelImport, LevelCopy, LevelPaste, LevelEditTitle, LevelSettingsM, LevelSaveAsPNG}
+                                          ViewPriority, ViewRespawnAreas, LevelExport, LevelImport, LevelCopy, LevelPaste, LevelEditTitle, LevelSettingsM, LevelSaveAsPNG}
         TilePaste = New PasteTilesTool(Me)
         TileSuggestList.LoadAll()
         If My.Settings.RecentROMs <> "" Then
@@ -32,6 +32,7 @@
         If My.Application.CommandLineArgs.Count > 0 Then
             LoadROM(My.Application.CommandLineArgs(0))
         End If
+        ViewRespawnAreas.Checked = My.Settings.ShowRespawn
         ViewAnimate.Checked = My.Settings.Animate
         Backups.CheckForBackupsOnStart()
     End Sub
@@ -240,14 +241,17 @@
     End Sub
 
     Private Sub ViewGrid_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ViewGrid.Click
-        EdControl.Grid = ViewGrid.Checked
-        EdControl.Focus()
-        EdControl.Repaint()
+        UpdateEdControl()
     End Sub
 
     Private Sub ViewPriority_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ViewPriority.Click
         UpdateEdControl()
         EdControl.TilePicker.Invalidate(True)
+    End Sub
+
+    Private Sub ViewRespawnAreas_Click(sender As System.Object, e As System.EventArgs) Handles ViewRespawnAreas.Click
+        My.Settings.ShowRespawn = ViewRespawnAreas.Checked
+        UpdateEdControl()
     End Sub
 
     Private Sub ViewAnimate_Click(sender As System.Object, e As System.EventArgs) Handles ViewAnimate.Click
@@ -442,6 +446,7 @@
         If EdControl Is Nothing Then Return
         EdControl.Grid = ViewGrid.Checked
         EdControl.priority = ViewPriority.Checked
+        EdControl.showRespawn = ViewRespawnAreas.Checked
         EdControl.zoom = zoomLevel
         EdControl.UpdateScrollBars()
         EdControl.Focus()
