@@ -28,7 +28,7 @@
 
     End Sub
 
-    Public Sub New(ByVal delay As Byte, ByVal x As Integer, ByVal y As Integer, ByVal radius As Byte, ByVal ptr As Integer)
+    Public Sub New(ByVal radius As UShort, ByVal x As Integer, ByVal y As Integer, ByVal delay As UShort, ByVal ptr As Integer)
         Me.delay = delay
         Me.X = x
         Me.Y = y

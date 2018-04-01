@@ -25,8 +25,7 @@ Partial Class AddressUpDown
         Me.components = New System.ComponentModel.Container()
         Me.lblDollars = New System.Windows.Forms.Label()
         Me.lblColon = New System.Windows.Forms.Label()
-        Me.Bank = New System.Windows.Forms.NumericUpDown()
-        Me.Part2 = New System.Windows.Forms.NumericUpDown()
+        Me.Address = New System.Windows.Forms.NumericUpDown()
         Me.DropButton = New System.Windows.Forms.Button()
         Me.DisplayType = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TypeSNES = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,8 +34,7 @@ Partial Class AddressUpDown
         Me.TypeSave = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.nudHex = New System.Windows.Forms.NumericUpDown()
-        CType(Me.Bank, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Part2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Address, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.DisplayType.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.nudHex, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -60,27 +58,14 @@ Partial Class AddressUpDown
         Me.lblColon.TabIndex = 2
         Me.lblColon.Text = ":"
         '
-        'Bank
+        'Address
         '
-        Me.Bank.Hexadecimal = True
-        Me.Bank.Location = New System.Drawing.Point(0, 0)
-        Me.Bank.Maximum = New Decimal(New Integer() {255, 0, 0, 0})
-        Me.Bank.Minimum = New Decimal(New Integer() {128, 0, 0, 0})
-        Me.Bank.Name = "Bank"
-        Me.Bank.Size = New System.Drawing.Size(42, 20)
-        Me.Bank.TabIndex = 3
-        Me.Bank.Value = New Decimal(New Integer() {128, 0, 0, 0})
-        '
-        'Part2
-        '
-        Me.Part2.Hexadecimal = True
-        Me.Part2.Location = New System.Drawing.Point(55, 0)
-        Me.Part2.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
-        Me.Part2.Minimum = New Decimal(New Integer() {32768, 0, 0, 0})
-        Me.Part2.Name = "Part2"
-        Me.Part2.Size = New System.Drawing.Size(57, 20)
-        Me.Part2.TabIndex = 4
-        Me.Part2.Value = New Decimal(New Integer() {32768, 0, 0, 0})
+        Me.Address.Hexadecimal = True
+        Me.Address.Location = New System.Drawing.Point(0, 0)
+        Me.Address.Maximum = New Decimal(New Integer() {1048576, 0, 0, 0})
+        Me.Address.Name = "Address"
+        Me.Address.Size = New System.Drawing.Size(112, 20)
+        Me.Address.TabIndex = 4
         '
         'DropButton
         '
@@ -122,8 +107,7 @@ Partial Class AddressUpDown
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.Bank)
-        Me.Panel1.Controls.Add(Me.Part2)
+        Me.Panel1.Controls.Add(Me.Address)
         Me.Panel1.Controls.Add(Me.lblColon)
         Me.Panel1.Location = New System.Drawing.Point(18, 0)
         Me.Panel1.Name = "Panel1"
@@ -149,8 +133,7 @@ Partial Class AddressUpDown
         Me.Controls.Add(Me.lblDollars)
         Me.Name = "AddressUpDown"
         Me.Size = New System.Drawing.Size(147, 20)
-        CType(Me.Bank, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Part2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Address, System.ComponentModel.ISupportInitialize).EndInit()
         Me.DisplayType.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -161,8 +144,7 @@ Partial Class AddressUpDown
     End Sub
     Friend WithEvents lblDollars As System.Windows.Forms.Label
     Friend WithEvents lblColon As System.Windows.Forms.Label
-    Friend WithEvents Bank As System.Windows.Forms.NumericUpDown
-    Friend WithEvents Part2 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Address As System.Windows.Forms.NumericUpDown
     Friend WithEvents DropButton As System.Windows.Forms.Button
     Friend WithEvents DisplayType As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents TypeSNES As System.Windows.Forms.ToolStripMenuItem

@@ -14,13 +14,13 @@ Public Class TileAnimation
         Dim i As Integer = 0
         Dim value As Integer = -1
         Do While value <> 0 And i < tileAnimBoss.exData.Length - 1
-            value = tileAnimBoss.exData(i) + tileAnimBoss.exData(i + 1) * &H100
-            i += 2
+            value = tileAnimBoss.exData(i) Or tileAnimBoss.exData(i + 1) Or tileAnimBoss.exData(i + 2) Or tileAnimBoss.exData(i + 3)
+            i += 4
         Loop
 
         Dim curAnim As New List(Of UShort)
         Do While i < tileAnimBoss.exData.Length - 1
-            value = tileAnimBoss.exData(i) + tileAnimBoss.exData(i + 1) * &H100
+            value = tileAnimBoss.exData(i + 1) * &H100 + tileAnimBoss.exData(i)
             If value >= &HFFFE Then
                 loopAnim.Add(value = &HFFFF)
                 animations.Add(curAnim)
@@ -49,8 +49,8 @@ Public Class TileAnimation
 
                 For t As Integer = 0 To &HFF
                     For m As Integer = t * &H80 To t * &H80 + &H7F Step 2
-                        Dim g As Integer = tileset.map16(m)
-                        If (tileset.map16(m + 1) And 1) = 1 Then
+                        Dim g As Integer = tileset.map16(m + 1)
+                        If (tileset.map16(m) And 1) = 1 Then
                             g += &H100
                         End If
                         If g = startTile Then
@@ -80,7 +80,7 @@ Public Class TileAnimation
                 If animTile > -1 And animTile < tileset.LinGFX.Length Then
                     Dim pos As TilePos = tilePositions(i)(t)
                     data = tileset.images(pos.tileNum).LockBits(New Rectangle(0, 0, 64, 64), ImageLockMode.WriteOnly, PixelFormat.Format8bppIndexed)
-                    SNESGFX.DrawTile(data, pos.x * 8, pos.y * 8, tileset.map16(pos.tileNum * &H80 + (pos.y * 8 + pos.x) * 2 + 1) And &HFE, animTile, tileset.LinGFX)
+                    SMDGFX.DrawTile(data, pos.x * 8, pos.y * 8, tileset.map16(pos.tileNum * &H80 + (pos.y * 8 + pos.x) * 2 + 1) And &HFE, animTile, tileset.LinGFX)
                     tileset.images(pos.tileNum).UnlockBits(data)
                     animated = True
                 End If

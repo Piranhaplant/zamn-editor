@@ -12,27 +12,25 @@
             If curType Then
                 Return nudHex.Value
             Else
-                Return (Bank.Value - &H80) * &H8000 + Part2.Value - &H8000
+                Return Address.Value
             End If
         End Get
         Set(ByVal value As Integer)
-            If value < 0 Then
-                Me.Value = 0
-                Return
-            End If
+            '         If value < 0 Then
+            '       Me.Value = 0
+            '      Return
+            '      End If
             If curType Then
                 nudHex.Value = value
             Else
-                Dim bnk As Integer = value \ &H8000
-                Bank.Value = bnk + &H80
-                Part2.Value = value - bnk * &H8000 + &H8000
+                Address.Value = value
             End If
         End Set
     End Property
 
     Public Event ValueChanged(ByVal sender As Object, ByVal e As EventArgs)
 
-    Private Sub nud_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles Bank.ValueChanged, Part2.ValueChanged, nudHex.ValueChanged
+    Private Sub nud_ValueChanged(ByVal sender As Object, ByVal e As EventArgs) Handles Address.ValueChanged, nudHex.ValueChanged
         RaiseEvent ValueChanged(Me, EventArgs.Empty)
     End Sub
 

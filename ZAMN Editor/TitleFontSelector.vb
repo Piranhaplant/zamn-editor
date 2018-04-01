@@ -55,7 +55,7 @@
     Private Sub TitleFontSelector_Paint(sender As Object, e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
         If gfx Is Nothing Then Return
         For i As Integer = 0 To gfx.LetterImgs.Length - 1
-            SNESGFX.DrawWithPlt(e.Graphics, rects(i).X + charPadding, rects(i).Y + charPadding, gfx.LetterImgs(i), gfx.plt, curPlt * &H10, &H20)
+            SMDGFX.DrawWithPlt(e.Graphics, rects(i).X + charPadding, rects(i).Y + charPadding, gfx.LetterImgs(i), gfx.plt, curPlt * &H10, &H10)
             If i = SelectedIndex Then
                 e.Graphics.DrawRectangle(Pens.White, rects(i))
             End If

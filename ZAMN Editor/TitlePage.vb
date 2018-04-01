@@ -131,7 +131,6 @@ Public Class Word
         Me.x = s.ReadByte
         Me.y = s.ReadByte
         Me.font = s.ReadByte
-        s.ReadByte() 'skip page number
         Do
             Dim num As Byte = s.ReadByte
             If num = &HFF Or num = 0 Then

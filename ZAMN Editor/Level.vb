@@ -37,56 +37,56 @@
         Else
             tileset = New Tileset(s)
         End If
-        s.Seek(startAddr + &H22, IO.SeekOrigin.Begin)
-        Width = s.ReadByte() + s.ReadByte() * &H100
-        Height = s.ReadByte() + s.ReadByte() * &H100
+        s.Seek(startAddr + &H24, IO.SeekOrigin.Begin)
+        Width = s.ReadByte() * &H100 + s.ReadByte()
+        Height = s.ReadByte() * &H100 + s.ReadByte()
         ReDim Tiles(Width - 1, Height - 1)
-        unknown = s.ReadByte + s.ReadByte * &H100
-        unknown3 = s.ReadByte + s.ReadByte * &H100
-        p1Start = New Point(s.ReadByte + s.ReadByte * &H100, s.ReadByte + s.ReadByte * &H100)
-        p2Start = New Point(s.ReadByte + s.ReadByte * &H100, s.ReadByte + s.ReadByte * &H100)
-        music = s.ReadByte + s.ReadByte * &H100
-        sounds = s.ReadByte + s.ReadByte * &H100
-        s.Seek(startAddr + &H14, IO.SeekOrigin.Begin)
+        unknown = s.ReadByte * &H100 + s.ReadByte
+        unknown3 = s.ReadByte * &H100 + s.ReadByte
+        p1Start = New Point(s.ReadByte * &H100 + s.ReadByte, s.ReadByte * &H100 + s.ReadByte)
+        p2Start = New Point(s.ReadByte * &H100 + s.ReadByte, s.ReadByte * &H100 + s.ReadByte)
+        music = s.ReadByte * &H100 + s.ReadByte
+        sounds = music
+        s.Seek(startAddr + &H10, IO.SeekOrigin.Begin) 'Seek to Level Palette
         spritePal = Pointers.ReadPointer(s)
         If import Then
             s.Seek(4, IO.SeekOrigin.Begin)
             s.Seek(s.ReadByte + s.ReadByte * &H100 + 14, IO.SeekOrigin.Begin)
         Else
-            s.Seek(startAddr + &H20, IO.SeekOrigin.Begin)
-            Pointers.GoToRelativePointer(s, &H9F)
+            s.Seek(startAddr + &H20, IO.SeekOrigin.Begin) 'Seek To Item Pointer
+            Pointers.GoToPointer(s)
         End If
         If Not ErrorLog.HasError Then
-            Do
-                Dim v As Integer = s.ReadByte + s.ReadByte * &H100
+            Do 'Add all items
+                Dim v As Integer = s.ReadByte * &H100 + s.ReadByte
                 If v = 0 Then Exit Do
-                objects.Add(New Item(v - 8, s.ReadByte + s.ReadByte * &H100 - 8, s.ReadByte \ 2))
+                objects.Add(New Item(v - 8, s.ReadByte * &H100 + s.ReadByte - 8, (s.ReadByte * &H100 + s.ReadByte) \ 2))
             Loop
         End If
         If import Then
             s.Seek(2, IO.SeekOrigin.Begin)
             s.Seek(s.ReadByte + s.ReadByte * &H100 + 14, IO.SeekOrigin.Begin)
         Else
-            s.Seek(startAddr + &H1E, IO.SeekOrigin.Begin)
-            Pointers.GoToRelativePointer(s, &H9F)
+            s.Seek(startAddr + &H1C, IO.SeekOrigin.Begin) 'Seek to Victim pointer
+            Pointers.GoToPointer(s)
         End If
         If Not ErrorLog.HasError Then
             For n As Integer = 1 To 10
-                Dim vic As New Victim(s.ReadByte + s.ReadByte * &H100, s.ReadByte + s.ReadByte * &H100, s.ReadByte + s.ReadByte * &H100, _
-                                      s.ReadByte + s.ReadByte * &H100, Pointers.ReadPointer(s))
-                vic.x -= Pointers.SpriteOffsets(vic.index * 2)
-                vic.y -= Pointers.SpriteOffsets(vic.index * 2 + 1)
+                Dim vic As New Victim(s.ReadByte * &H100 + s.ReadByte, s.ReadByte * &H100 + s.ReadByte, s.ReadByte * &H100 + s.ReadByte,
+                                      s.ReadByte * &H100 + s.ReadByte, Pointers.ReadPointer(s))
+                vic.X -= Pointers.SpriteOffsets(vic.index * 2)
+                vic.Y -= Pointers.SpriteOffsets(vic.index * 2 + 1)
                 objects.Add(vic)
             Next
             objects.Add(New Victim(p1Start.X - 8, p1Start.Y - 39, 0, 0, 1))
             objects.Add(New Victim(p2Start.X - 16, p2Start.Y - 42, 0, 0, 2))
             Do
-                Dim x As Integer = s.ReadByte + s.ReadByte * &H100
+                Dim x As Integer = s.ReadByte * &H100 + s.ReadByte
                 If x = 0 Then Exit Do
-                Dim mon As New NRMonster(x, s.ReadByte + s.ReadByte * &H100, s.ReadByte + s.ReadByte * &H100, _
-                                         s.ReadByte + s.ReadByte * &H100, Pointers.ReadPointer(s))
-                mon.x -= Pointers.SpriteOffsets(mon.index * 2)
-                mon.y -= Pointers.SpriteOffsets(mon.index * 2 + 1)
+                Dim mon As New NRMonster(x, s.ReadByte * &H100 + s.ReadByte, s.ReadByte * &H100 + s.ReadByte,
+                                         s.ReadByte * &H100 + s.ReadByte, Pointers.ReadPointer(s))
+                mon.X -= Pointers.SpriteOffsets(mon.index * 2)
+                mon.Y -= Pointers.SpriteOffsets(mon.index * 2 + 1)
                 objects.Add(mon)
             Loop
         End If
@@ -94,18 +94,18 @@
             s.Seek(0, IO.SeekOrigin.Begin)
             s.Seek(s.ReadByte + s.ReadByte * &H100 + 14, IO.SeekOrigin.Begin)
         Else
-            s.Seek(startAddr + 28, IO.SeekOrigin.Begin)
-            Pointers.GoToRelativePointer(s, &H9F)
+            s.Seek(startAddr + 24, IO.SeekOrigin.Begin) ' seek to respawn monsters pointer
+            Pointers.GoToPointer(s)
         End If
         If Not ErrorLog.HasError Then
             Do
-                Dim radius As Integer = s.ReadByte
-                Dim x1 As Integer = s.ReadByte
-                If x1 = 0 And radius = 0 Then Exit Do
-                Dim mon As New Monster(radius, x1 + s.ReadByte * &H100, s.ReadByte + s.ReadByte * &H100, _
-                                       s.ReadByte, Pointers.ReadPointer(s))
-                mon.x -= Pointers.SpriteOffsets(mon.index * 2)
-                mon.y -= Pointers.SpriteOffsets(mon.index * 2 + 1)
+                Dim radius As Integer = s.ReadByte * &H100 + s.ReadByte
+                Dim x1 As Integer = s.ReadByte * &H100 + s.ReadByte
+                If radius = 0 Then Exit Do
+                Dim mon As New Monster(radius, x1, s.ReadByte * &H100 + s.ReadByte,
+                                       s.ReadByte * &H100 + s.ReadByte, Pointers.ReadPointer(s))
+                mon.X -= Pointers.SpriteOffsets(mon.index * 2)
+                mon.Y -= Pointers.SpriteOffsets(mon.index * 2 + 1)
                 objects.Add(mon)
             Loop
         End If
@@ -118,11 +118,11 @@
             page2 = New TitlePage(s)
         Else
             s.Seek(startAddr + &H36, IO.SeekOrigin.Begin)
-            Pointers.GoToRelativePointer(s, &H9F)
+            Pointers.GoToPointer(s)
             ErrorLog.CheckError("Level is missing title page 1.")
             page1 = New TitlePage(s)
-            s.Seek(startAddr + &H38, IO.SeekOrigin.Begin)
-            Pointers.GoToRelativePointer(s, &H9F)
+            s.Seek(startAddr + &H3A, IO.SeekOrigin.Begin)
+            Pointers.GoToPointer(s)
             ErrorLog.CheckError("Level is missing title page 2.")
             page2 = New TitlePage(s)
         End If
@@ -130,24 +130,24 @@
             s.Seek(10, IO.SeekOrigin.Begin)
             s.Seek(s.ReadByte + s.ReadByte * &H100 + 14, IO.SeekOrigin.Begin)
         Else
-            s.Seek(startAddr + &H3A, IO.SeekOrigin.Begin)
-            Pointers.GoToRelativePointer(s, &H9F)
+            s.Seek(startAddr + &H3E, IO.SeekOrigin.Begin) 'Seek To Bonus Level Pointer
+            Pointers.GoToPointer(s)
         End If
         If Not ErrorLog.HasError Then
             Do
-                Dim n As Integer = s.ReadByte + s.ReadByte * &H100
+                Dim n As Integer = (s.ReadByte << 8) + s.ReadByte
                 If n = 0 Then Exit Do
                 bonuses.Add(n)
             Loop
         End If
-        s.Seek(startAddr + &H3C, IO.SeekOrigin.Begin)
+        s.Seek(startAddr + &H42, IO.SeekOrigin.Begin) 'seek to animation pointers
         Do
             Dim ptr As Integer = Pointers.ReadPointer(s)
-            If ptr = -1 Then Exit Do
+            If ptr = 0 Then Exit Do
             If ZAMNEditor.Pointers.SpBossMonsters.Contains(ptr) Then
                 Dim curaddr As Integer = s.Position
                 If import Then
-                    Dim bossDataPtr = s.ReadByte() + s.ReadByte() * &H100
+                    Dim bossDataPtr = s.ReadByte() * &H100 + s.ReadByte()
                     If bossDataPtr > 0 Then
                         s.Seek(bossDataPtr + 14, IO.SeekOrigin.Begin)
                     Else
@@ -155,18 +155,25 @@
                         s.Seek(curaddr + 4, IO.SeekOrigin.Begin)
                         Continue Do
                     End If
-                Else
-                    Pointers.GoToPointer(s)
+                    'Else
+                    '   Pointers.GoToPointer(s)
                 End If
                 Select Case ptr
                     Case ZAMNEditor.Pointers.SpBossMonsters(0)
-                        objects.Add(New BossMonster(ptr, s, 8))
+                        objects.Add(New BossMonster(ptr, s, 4))
                     Case ZAMNEditor.Pointers.SpBossMonsters(1)
-                        Dim value As Integer, count As Integer, passed As Boolean = False
-                        Dim newData As New List(Of Byte)
-                        If s.Position > curaddr Then
+                        Dim PtrAddress As Integer
+                        Do
+                            PtrAddress = Pointers.ReadPointer(s)
+                            Dim SaveAddress As Integer = s.Position
+                            If PtrAddress = 0 Then
+                                Exit Do
+                            End If
+                            s.Seek(PtrAddress, IO.SeekOrigin.Begin)
+                            Dim value As Integer, count As Integer, passed As Boolean = False
+                            Dim newData As New List(Of Byte)
                             Do
-                                value = s.ReadByte + s.ReadByte * &H100
+                                value = s.ReadByte * &H100 + s.ReadByte
                                 If value < 0 Or newData.Count > &H200 Then
                                     newData.Clear()
                                     newData.Add(0)
@@ -174,7 +181,7 @@
                                     Exit Do
                                 End If
                                 If value = 0 Then passed = True
-                                If passed And (value = &HFFFF Or value = &HFFFE) Then count -= 1
+                                If passed And (value = &HFFFF Or value = &HFFFE) Then count -= 2
                                 If Not passed Then count += 1
                                 newData.Add(value Mod &H100)
                                 newData.Add(value \ &H100)
@@ -182,24 +189,30 @@
                             Loop
                             objects.Add(New BossMonster(ptr, newData.ToArray()))
                             Debug.WriteLine("Tile animation size: " + newData.Count.ToString())
-                        End If
+                            s.Seek(SaveAddress, IO.SeekOrigin.Begin)
+                        Loop
                 End Select
                 s.Seek(curaddr + 4, IO.SeekOrigin.Begin)
             Else
-                objects.Add(New BossMonster(ptr, s.ReadByte + s.ReadByte * &H100, s.ReadByte + s.ReadByte * &H100))
+                objects.Add(New BossMonster(ptr, s.ReadByte * &H100 + s.ReadByte, s.ReadByte * &H100 + s.ReadByte))
             End If
         Loop
         If import Then
             s.Seek(12, IO.SeekOrigin.Begin)
             s.Seek(s.ReadByte + s.ReadByte * &H100, IO.SeekOrigin.Begin)
+            For l As Integer = 0 To Width * Height - 1
+                Tiles(l Mod Width, l \ Width) = (s.ReadByte() * &H100 + s.ReadByte()) And &HFF
+            Next
         Else
             s.Seek(startAddr + 4, IO.SeekOrigin.Begin)
             Pointers.GoToPointer(s)
             ErrorLog.CheckError("Level has no background data.")
+            Dim Map As Byte() = ZAMNCompress.Decompress(s)
+            For l As Integer = 0 To Width * Height - 1
+                Tiles(l Mod Width, l \ Width) = (Map(l * 2) * &H100 + Map(l * 2 + 1)) And &HFF
+            Next
         End If
-        For l As Integer = 0 To Width * Height - 1
-            Tiles(l Mod Width, l \ Width) = (s.ReadByte() + s.ReadByte() * &H100) And &HFF
-        Next
+
         If import Then
             GFX = New LevelGFX(romStream, spritePal)
         Else
@@ -223,15 +236,15 @@
         file.AddRange(Pointers.ToArray(tileset.paletteAddr))
         file.AddRange(Pointers.ToArray(spritePal))
         file.AddRange(Pointers.ToArray(tileset.pltAnimAddr))
-        file.AddRange(New Byte() {0, 0, 0, 0, 0, 0, _
-                                  Width Mod &H100, Width \ &H100, _
-                                  Height Mod &H100, Height \ &H100, _
-                                  unknown Mod &H100, unknown \ &H100, _
-                                  unknown3 Mod &H100, unknown3 \ &H100, _
-                                  p1Start.X Mod &H100, p1Start.X \ &H100, p1Start.Y Mod &H100, p1Start.Y \ &H100, _
-                                  p2Start.X Mod &H100, p2Start.X \ &H100, p2Start.Y Mod &H100, p2Start.Y \ &H100, _
-                                  music Mod &H100, music \ &H100, _
-                                  sounds Mod &H100, sounds \ &H100, _
+        file.AddRange(New Byte() {0, 0, 0, 0, 0, 0,
+                                  Width Mod &H100, Width \ &H100,
+                                  Height Mod &H100, Height \ &H100,
+                                  unknown Mod &H100, unknown \ &H100,
+                                  unknown3 Mod &H100, unknown3 \ &H100,
+                                  p1Start.X Mod &H100, p1Start.X \ &H100, p1Start.Y Mod &H100, p1Start.Y \ &H100,
+                                  p2Start.X Mod &H100, p2Start.X \ &H100, p2Start.Y Mod &H100, p2Start.Y \ &H100,
+                                  music Mod &H100, music \ &H100,
+                                  sounds Mod &H100, sounds \ &H100,
                                   0, 0, 0, 0, 0, 0})
         For Each m As BossMonster In objects.BossMonsters
             file.AddRange(Pointers.ToArray(m.ptr))
@@ -261,7 +274,7 @@
                 x = v.X + Pointers.SpriteOffsets(v.index * 2)
                 y = v.Y + Pointers.SpriteOffsets(v.index * 2 + 1)
                 Dim num As UShort = IIf(v.num = 10, 16, v.num)
-                file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, v.unused Mod &H100, v.unused \ &H100, _
+                file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, v.unused Mod &H100, v.unused \ &H100,
                                           num Mod &H100, num \ &H100})
                 file.AddRange(Pointers.ToArray(v.ptr))
             End If
@@ -270,7 +283,7 @@
         For Each m As NRMonster In objects.NRMonsters
             x = m.X + Pointers.SpriteOffsets(m.index * 2)
             y = m.Y + Pointers.SpriteOffsets(m.index * 2 + 1)
-            file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, m.extra Mod &H100, m.extra \ &H100, _
+            file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, m.extra Mod &H100, m.extra \ &H100,
                                       m.unused Mod &H100, m.unused \ &H100})
             file.AddRange(Pointers.ToArray(m.ptr))
         Next

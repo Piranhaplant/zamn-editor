@@ -85,8 +85,8 @@
     End Sub
 
     Private Sub nudPlt_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles nudPlt.ValueChanged
-        If nudPlt.Value = 8 Then
-            nudPlt.Value = 6
+        If nudPlt.Value = 4 Then
+            nudPlt.Value = 3
             Return
         End If
         FontSelector.SetPalette(nudPlt.Value)

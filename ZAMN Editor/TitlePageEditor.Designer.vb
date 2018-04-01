@@ -150,9 +150,8 @@ Partial Class TitlePageEditor
         '
         'nudPlt
         '
-        Me.nudPlt.Increment = New Decimal(New Integer() {2, 0, 0, 0})
         Me.nudPlt.Location = New System.Drawing.Point(366, 279)
-        Me.nudPlt.Maximum = New Decimal(New Integer() {8, 0, 0, 0})
+        Me.nudPlt.Maximum = New Decimal(New Integer() {3, 0, 0, 0})
         Me.nudPlt.Name = "nudPlt"
         Me.nudPlt.Size = New System.Drawing.Size(38, 20)
         Me.nudPlt.TabIndex = 11
@@ -240,6 +239,7 @@ Partial Class TitlePageEditor
         '
         'TitlePageEdCtrl2
         '
+        Me.TitlePageEdCtrl2.AdvancedEditing = False
         Me.TitlePageEdCtrl2.Location = New System.Drawing.Point(274, 12)
         Me.TitlePageEdCtrl2.Name = "TitlePageEdCtrl2"
         Me.TitlePageEdCtrl2.ShowBorder = True
@@ -248,6 +248,7 @@ Partial Class TitlePageEditor
         '
         'TitlePageEdCtrl1
         '
+        Me.TitlePageEdCtrl1.AdvancedEditing = False
         Me.TitlePageEdCtrl1.Location = New System.Drawing.Point(12, 12)
         Me.TitlePageEdCtrl1.Name = "TitlePageEdCtrl1"
         Me.TitlePageEdCtrl1.ShowBorder = True

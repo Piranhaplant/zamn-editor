@@ -9,19 +9,19 @@
 
     Public Sub Reload(ByVal s As IO.Stream, ByVal pal As Integer)
         s.Seek(Pointers.ItemGFX, IO.SeekOrigin.Begin)
-        Dim gfx(3455) As Byte
-        s.Read(gfx, 0, 3456)
-        s.Seek(pal, IO.SeekOrigin.Begin)
-        Dim plt As Color() = SNESGFX.ReadPalette(s, 256, True)
+        Dim gfx(3712) As Byte
+        s.Read(gfx, 0, 3712)
+        s.Seek(pal + 4, IO.SeekOrigin.Begin)
+        Dim plt As Color() = SMDGFX.ReadPalette(s, 64, True)
         ItemImages.Clear()
         For l As Integer = 0 To My.Resources.ItemPalettes.Length - 1
             Dim bmp As New Bitmap(16, 16)
             Dim gfxIndex As Integer = My.Resources.ItemIndexes(l) * &H20
             Dim pltIndex As Integer = My.Resources.ItemPalettes(l) * &H10
-            SNESGFX.DrawTile(bmp, 0, 0, gfx, gfxIndex, plt, pltIndex, False, False)
-            SNESGFX.DrawTile(bmp, 8, 0, gfx, gfxIndex + &H20, plt, pltIndex, False, False)
-            SNESGFX.DrawTile(bmp, 0, 8, gfx, gfxIndex + &H40, plt, pltIndex, False, False)
-            SNESGFX.DrawTile(bmp, 8, 8, gfx, gfxIndex + &H60, plt, pltIndex, False, False)
+            SMDGFX.DrawTile(bmp, 0, 0, gfx, gfxIndex, plt, pltIndex, False, False)
+            SMDGFX.DrawTile(bmp, 0, 8, gfx, gfxIndex + &H20, plt, pltIndex, False, False)
+            SMDGFX.DrawTile(bmp, 8, 0, gfx, gfxIndex + &H40, plt, pltIndex, False, False)
+            SMDGFX.DrawTile(bmp, 8, 8, gfx, gfxIndex + &H60, plt, pltIndex, False, False)
             ItemImages.Add(bmp)
         Next
         VictimImages.Clear()
@@ -39,7 +39,7 @@
                         If indx > 0 Then
                             If (s2.ReadByte <> 0) = (p <> 0) Then
                                 s.Seek(indx, IO.SeekOrigin.Begin)
-                                SNESGFX.DrawTile(img, x * 8 + s2.ReadSByte, y * 8 + s2.ReadSByte, s, plt, s2.ReadByte * 16, s2.ReadByte > 0, s2.ReadByte > 0)
+                                SMDGFX.DrawTile(img, x * 8 + s2.ReadSByte, y * 8 + s2.ReadSByte, s, plt, s2.ReadByte * 16, s2.ReadByte > 0, s2.ReadByte > 0)
                             Else
                                 s2.BaseStream.Seek(5, IO.SeekOrigin.Current)
                             End If

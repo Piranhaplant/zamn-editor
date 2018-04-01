@@ -86,8 +86,8 @@
     End Function
 
     Public Function GetSpritePalette() As Integer
-        If exData IsNot Nothing AndAlso exData.Length >= 8 Then
-            Return Pointers.ToInteger(exData, 4)
+        If exData IsNot Nothing AndAlso exData.Length >= 4 Then
+            Return Pointers.ToInteger(exData, 0)
         Else
             Return -1
         End If

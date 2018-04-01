@@ -12,26 +12,26 @@ Public Class ROM
 
     Public hacked As Boolean = False
 
-    Private Shared offsetPos As Integer() = {&H1C, &H1E, &H20, &H36, &H38, &H3A}
+    Private Shared offsetPos As Integer() = {&H1C, &H1E, &H20, &H36, &H3A, &H3E}
 
     Public Sub New(ByVal path As String)
-#If Not Debug Then
+#If Not DEBUG Then
         Try
 #End If
         Me.path = path
         Dim s As New FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.Read)
-        If HasHeader(s) Then
-            RemoveHeader(s)
-            MsgBox("This ROM had a header which was automatically removed")
-        End If
+        'If HasHeader(s) Then
+        'RemoveHeader(s)
+        'MsgBox("This ROM had a header which was automatically removed")
+        'End If
         s.Seek(Pointers.LevelPointers, SeekOrigin.Begin)
-        regLvlCount = s.ReadByte() + s.ReadByte() * &H100 - 1
+        regLvlCount = 49
         maxLvlNum = regLvlCount
         s.Seek(Pointers.BonusLvlNums, SeekOrigin.Begin)
         Dim num As Integer
         Dim curLvl As Integer = 0
         For l As Integer = 0 To maxLvlNum
-            num = s.ReadByte() + s.ReadByte() * &H100
+            num = s.ReadByte() * &H100 + s.ReadByte()
             If num <> 0 Then
                 bonusLvls.Add(num)
                 maxLvlNum = Math.Max(maxLvlNum, num)
@@ -86,7 +86,7 @@ Public Class ROM
         'hacked = True
 
         s.Close()
-#If Not Debug Then
+#If Not DEBUG Then
         Catch ex As Exception
             failed = True
             MsgBox("Error: " & ex.Message, MsgBoxStyle.Critical)
@@ -119,22 +119,17 @@ Public Class ROM
 
     Public Function GetLevelTitle(ByVal s As Stream, ByVal ptr As Integer) As String
         s.Seek(ptr + &H36, SeekOrigin.Begin)
-        Pointers.GoToRelativePointer(s, &H9F)
+        Pointers.GoToPointer(s)
         Dim TP1 As New TitlePage(s)
-        s.Seek(ptr + &H38, SeekOrigin.Begin)
-        Pointers.GoToRelativePointer(s, &H9F)
+        s.Seek(ptr + &H3A, SeekOrigin.Begin)
+        Pointers.GoToPointer(s)
         Dim TP2 As New TitlePage(s)
         Return TitlePage.FormatTitleString(TP1.ToString & " " & TP2.ToString)
     End Function
 
     Public Function GetLvlPtr(ByVal num As Integer, ByVal s As Stream) As Integer
-        If hacked Then
-            s.Seek(Pointers.LevelPointers + 2 + num * 4, SeekOrigin.Begin)
-            Return Pointers.ReadPointer(s)
-        Else
-            s.Seek(Pointers.LevelPointers + 2 + num * 2, SeekOrigin.Begin)
-            Return Pointers.ReadRelativePointer(s, &H9F)
-        End If
+        s.Seek(Pointers.LevelPointers + num * 4, SeekOrigin.Begin)
+        Return Pointers.ReadPointer(s)
     End Function
 
     Public Function GotoLvlPtr(ByVal num As Integer, ByVal s As Stream) As Integer
@@ -226,7 +221,7 @@ Public Class ROM
         Dim ROMSize As Long = fs.Length
         Dim backup(ROMSize - 1) As Byte
         fs.Read(backup, 0, ROMSize)
-#If Not Debug Then
+#If Not DEBUG Then
         Try
 #End If
         Dim data As LevelWriteData = lvl.GetWriteData()
@@ -266,15 +261,15 @@ Public Class ROM
         Dim bossIndex As Integer = 0
         Do 'set pointers for special boss monsters
             tempptr = Pointers.ReadPointer(fs)
-                If Pointers.SpBossMonsters.Contains(tempptr) And bossIndex < data.bossDataPtr.Count Then
-                    fs.Write(Pointers.ToArray(data.bossDataPtr(bossIndex) + lvlPtr), 0, 4)
-                    bossIndex += 1
-                ElseIf tempptr = -1 Then
-                    Exit Do
-                Else
-                    fs.Seek(4, SeekOrigin.Current)
-                End If
-            Loop
+            If Pointers.SpBossMonsters.Contains(tempptr) And bossIndex < data.bossDataPtr.Count Then
+                fs.Write(Pointers.ToArray(data.bossDataPtr(bossIndex) + lvlPtr), 0, 4)
+                bossIndex += 1
+            ElseIf tempptr = -1 Then
+                Exit Do
+            Else
+                fs.Seek(4, SeekOrigin.Current)
+            End If
+        Loop
         'Hacky way to make sure the tile animations don't get messed up
         fs.Seek(lvlPtr, SeekOrigin.Begin)
         FixTileAnim(fs)
@@ -329,7 +324,7 @@ Public Class ROM
         fs.SetLength(ROMSize)
         names(lvl.num) = GetLevelTitle(fs, lvlPtr)
         OpenLevel.SetName(lvl.num, names(lvl.num))
-#If Not Debug Then
+#If Not DEBUG Then
         Catch ex As Exception
             MsgBox("Error saving level." & Environment.NewLine & ex.Message, MsgBoxStyle.Critical, "Error")
             'Restore the backup

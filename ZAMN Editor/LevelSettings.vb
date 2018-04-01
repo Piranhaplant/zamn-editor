@@ -66,22 +66,15 @@
         End If
         'Music
         nudMusic.Value = lvl.music
-        If lvl.music >= 2 And lvl.music <= 11 Then
-            cboMusic.SelectedIndex = lvl.music - 2
+        If lvl.music >= 1 And lvl.music <= &H2F Then
+            cboMusic.SelectedIndex = Array.IndexOf(Pointers.Musics, lvl.music)
         End If
         If cboMusic.SelectedIndex <> -1 Then
             radMusicAuto.Checked = True
         Else
             radMusicMan.Checked = True
         End If
-        'Sounds
-        nudSounds.Value = lvl.sounds
-        If lvl.sounds < cboSounds.Items.Count Then
-            cboSounds.SelectedIndex = lvl.sounds
-            radSoundsAuto.Checked = True
-        Else
-            radSoundsMan.Checked = True
-        End If
+
         'Unknown3
         nudUnk3.Value = lvl.unknown3
         If lvl.unknown3 = &H1FF Then
@@ -96,8 +89,8 @@
             lstBonuses.SetItemChecked(l, False)
         Next
         For Each b As Integer In lvl.bonuses
-            If b >= 4 And b <= 32 And b Mod 2 = 0 Then
-                lstBonuses.SetItemChecked(b \ 2 - 2, True)
+            If b >= 8 And b <= 64 And b Mod 4 = 0 Then
+                lstBonuses.SetItemChecked(b \ 4 - 2, True)
             Else
                 lstCustomBonuses.Items.Add(Hex(b))
             End If
@@ -108,7 +101,8 @@
             If m.ptr = Pointers.SpBossMonsters(0) Then
                 chkPltFade.Checked = True
                 addrPalF.Value = m.GetBGPalette
-                palIdx = Array.IndexOf(Pointers.Palettes, addrPalF.Value)
+                Dim address As Integer = addrPalF.Value
+                palIdx = Array.IndexOf(Pointers.Palettes, address)
                 If palIdx >= cboTiles.SelectedIndex * 5 And palIdx <= cboTiles.SelectedIndex * 5 + 4 Then
                     cboPalF.SelectedIndex = If((palIdx Mod 5) >= cboPalF.Items.Count, -1, palIdx Mod 5)
                 End If
@@ -116,12 +110,6 @@
                     radPalAutoF.Checked = True
                 Else
                     radPalManF.Checked = True
-                End If
-                addrSPalF.Value = m.GetSpritePalette
-                If addrSPalF.Value = Pointers.SpritePlt Then
-                    radSPalAutoF.Checked = True
-                Else
-                    radSPalManF.Checked = True
                 End If
             End If
             'Tile Animation
@@ -149,9 +137,9 @@
         Next
     End Sub
 
-    Private Sub radAuto_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles radColAuto.CheckedChanged, radPalAutoF.CheckedChanged, _
-        radGFXAuto.CheckedChanged, radMusicAuto.CheckedChanged, radPalAuto.CheckedChanged, radSPalAuto.CheckedChanged, radPAnimAuto.CheckedChanged, _
-        radTilesAuto.CheckedChanged, radSoundsAuto.CheckedChanged, radUnk3Auto.CheckedChanged, radUnkAuto.CheckedChanged, radSPalAutoF.CheckedChanged
+    Private Sub radAuto_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles radColAuto.CheckedChanged, radPalAutoF.CheckedChanged,
+        radGFXAuto.CheckedChanged, radMusicAuto.CheckedChanged, radPalAuto.CheckedChanged, radSPalAuto.CheckedChanged, radPAnimAuto.CheckedChanged,
+        radTilesAuto.CheckedChanged, radUnk3Auto.CheckedChanged, radUnkAuto.CheckedChanged
         Dim rad As Control = sender
         For Each ctrl As Control In rad.Parent.Controls
             If TypeOf ctrl Is AddressUpDown Or TypeOf ctrl Is NumericUpDown Then
@@ -172,15 +160,13 @@
         End If
         If radSPalAuto.Checked Then addrSPal.Value = Pointers.SpritePlt
         If cboPltAnim.SelectedIndex > -1 And radPAnimAuto.Checked Then addrPAnim.Value = Pointers.PltAnim(cboPltAnim.SelectedIndex)
-        If cboMusic.SelectedIndex > -1 And radMusicAuto.Checked Then nudMusic.Value = cboMusic.SelectedIndex + 2
-        If cboSounds.SelectedIndex > -1 And radSoundsAuto.Checked Then nudSounds.Value = cboSounds.SelectedIndex
+        If cboMusic.SelectedIndex > -1 And radMusicAuto.Checked Then nudMusic.Value = Pointers.Musics(cboMusic.SelectedIndex)
         If radUnk3Auto.Checked Then nudUnk3.Value = 511
-        If radSPalAutoF.Checked Then addrSPalF.Value = Pointers.SpritePlt
     End Sub
 
-    Private Sub radMan_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles radColMan.CheckedChanged, radPalManF.CheckedChanged, _
-        radGFXMan.CheckedChanged, radMusicMan.CheckedChanged, radPalMan.CheckedChanged, radPAnimMan.CheckedChanged, radSPalMan.CheckedChanged, _
-        radTilesMan.CheckedChanged, radSoundsMan.CheckedChanged, radUnk3Man.CheckedChanged, radUnkMan.CheckedChanged, radSPalManF.CheckedChanged
+    Private Sub radMan_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles radColMan.CheckedChanged, radPalManF.CheckedChanged,
+        radGFXMan.CheckedChanged, radMusicMan.CheckedChanged, radPalMan.CheckedChanged, radPAnimMan.CheckedChanged, radSPalMan.CheckedChanged,
+        radTilesMan.CheckedChanged, radUnk3Man.CheckedChanged, radUnkMan.CheckedChanged
         Dim rad As Control = sender
         For Each ctrl As Control In rad.Parent.Controls
             If TypeOf ctrl Is ComboBox Then
@@ -197,10 +183,6 @@
         nudMusic.Value = cboMusic.SelectedIndex + 2
     End Sub
 
-    Private Sub cboSounds_SelectedIndexChanged(sender As System.Object, e As System.EventArgs) Handles cboSounds.SelectedIndexChanged
-        If cboSounds.SelectedIndex = -1 Then Return
-        nudSounds.Value = cboSounds.SelectedIndex
-    End Sub
 
     Private Sub cboPal_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboPal.SelectedIndexChanged
         If cboPal.SelectedIndex = -1 Then Return
@@ -254,12 +236,12 @@
         lvl.tileset.pltAnimAddr = addrPAnim.Value
         If cboPltAnim.SelectedIndex = 0 And radPAnimAuto.Checked Then lvl.tileset.pltAnimAddr = -1
         lvl.music = nudMusic.Value
-        lvl.sounds = nudSounds.Value
+        lvl.sounds = nudMusic.Value
         lvl.unknown3 = nudUnk3.Value
         lvl.bonuses.Clear()
         For l As Integer = 0 To lstBonuses.Items.Count - 1
             If lstBonuses.GetItemChecked(l) Then
-                lvl.bonuses.Add(l * 2 + 4)
+                lvl.bonuses.Add(l * 4 + 8)
             End If
         Next
         For Each i As String In lstCustomBonuses.Items
@@ -278,7 +260,6 @@
         If chkPltFade.Checked Then
             Dim exData(7) As Byte
             Array.Copy(Pointers.ToArray(addrPalF.Value), 0, exData, 0, 4)
-            Array.Copy(Pointers.ToArray(addrSPalF.Value), 0, exData, 4, 4)
             lvl.objects.BossMonsters.Add(New BossMonster(Pointers.SpBossMonsters(0), exData))
         End If
         If tileAnim IsNot Nothing Then
@@ -397,5 +378,13 @@
 
         btnDeleteTileAnim.Enabled = True
         btnExportTileAnim.Enabled = True
+    End Sub
+
+    Private Sub addrTiles_Load(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub AddressUpDown3_Load(sender As Object, e As EventArgs) Handles AddressUpDown3.Load
+
     End Sub
 End Class

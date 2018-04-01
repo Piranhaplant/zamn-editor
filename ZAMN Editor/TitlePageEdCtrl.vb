@@ -138,7 +138,7 @@ Public Class TitlePageEdCtrl
             End If
             If idx >= 0 And idx <= &H5F Then
                 If l < w.chars.Count Then
-                    SNESGFX.DrawWithPlt(g, curX, w.y * 8, gfx.LetterImgs(idx), gfx.plt, w.font * &H10, &H20)
+                    SMDGFX.DrawWithPlt(g, curX, w.y * 8, gfx.LetterImgs(idx), gfx.plt, w.font * &H10, &H10)
                 End If
                 If selectedChar = l And w Is selectedWord And _advancedEditing Then
                     If inserting Then
