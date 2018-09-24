@@ -34,9 +34,7 @@
 
     Private Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
         ed.EdControl.lvl.page1 = TitlePageEdCtrl1.tp
-        ed.EdControl.lvl.page1.Sort()
         ed.EdControl.lvl.page2 = TitlePageEdCtrl2.tp
-        ed.EdControl.lvl.page2.Sort()
         ed.EdControl.UndoMgr.ForceDirty()
         Me.Close()
     End Sub
@@ -68,6 +66,10 @@
         btnRefresh.Enabled = enabled
         btnAlignCenter.Enabled = enabled
         btnAlignMiddle.Enabled = enabled
+        btnMoveUp.Enabled = enabled
+        btnMoveDown.Enabled = enabled
+        btnMoveTop.Enabled = enabled
+        btnMoveBottom.Enabled = enabled
         nudPlt.Enabled = enabled Or chkPltAll.Checked
         If curWord IsNot Nothing Then
             updating = True
@@ -229,4 +231,19 @@
         Return result
     End Function
 
+    Private Sub btnMoveUp_Click(sender As System.Object, e As System.EventArgs) Handles btnMoveUp.Click
+        curCtrl.MoveUp()
+    End Sub
+
+    Private Sub btnMoveDown_Click(sender As System.Object, e As System.EventArgs) Handles btnMoveDown.Click
+        curCtrl.MoveDown()
+    End Sub
+
+    Private Sub btnMoveTop_Click(sender As System.Object, e As System.EventArgs) Handles btnMoveTop.Click
+        curCtrl.MoveTop()
+    End Sub
+
+    Private Sub btnMoveBottom_Click(sender As System.Object, e As System.EventArgs) Handles btnMoveBottom.Click
+        curCtrl.MoveBottom()
+    End Sub
 End Class

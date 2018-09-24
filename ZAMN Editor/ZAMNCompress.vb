@@ -3,7 +3,9 @@
     Public Shared Function Decompress(ByVal s As IO.Stream) As Byte()
         Dim result As New List(Of Byte)
         Dim dict(&HFFF) As Byte
-        Dim bytesLeft As Integer = s.ReadByte + s.ReadByte * &H100 'First 2 bytes are the compressed size
+        Dim bytesLeft As Integer
+        Dim moreData As Boolean
+        GetBytesRemaining(s, bytesLeft, moreData)
         Dim writeDictPos As Integer = &HFEE 'The dictionary starts at 0xFEE for some reason
         Dim readDictPos As Integer
         Dim bitsLeft As Integer = 0
@@ -12,16 +14,16 @@
         Do
             If bitsLeft = 0 Then 'When all the bits are used
                 bitsLeft = 8 'Reset
-                If ReadNext(s, writeByte, bytesLeft) Then Exit Do 'And get a new byte
+                If ReadNext(s, writeByte, bytesLeft, moreData) Then Exit Do 'And get a new byte
             End If
             bitsLeft -= 1
             If (writeByte And 1) = 1 Then 'If the current bit is one
-                If ReadNext(s, curByte, bytesLeft) Then Exit Do 'Simply read a byte from the file
+                If ReadNext(s, curByte, bytesLeft, moreData) Then Exit Do 'Simply read a byte from the file
                 result.Add(curByte) 'And put it in the result
                 dict(writeDictPos) = curByte 'And the dictionary
                 writeDictPos = (writeDictPos + 1) And &HFFF 'Increment the dictionary index, but not over 0xFFF
             Else 'If the current bit is 0
-                If ReadNext(s, readDictPos, bytesLeft) OrElse ReadNext(s, curByte, bytesLeft) Then Exit Do
+                If ReadNext(s, readDictPos, bytesLeft, moreData) OrElse ReadNext(s, curByte, bytesLeft, moreData) Then Exit Do
                 readDictPos = ((curByte And &HF0) * 16) Or readDictPos 'These 3 nybbles specify a read position from the dictionary
                 For l As Integer = 0 To (curByte And &HF) + 2 'The last nybble is how many bytes to read
                     curByte = dict(readDictPos)
@@ -36,12 +38,28 @@
         Return result.ToArray()
     End Function
 
-    Private Shared Function ReadNext(ByVal s As IO.Stream, ByRef result As Integer, ByRef bytesLeft As Integer) As Boolean
-        If bytesLeft = 0 Then Return True
+    Private Shared Function ReadNext(ByVal s As IO.Stream, ByRef result As Integer, ByRef bytesLeft As Integer, ByRef moreData As Boolean) As Boolean
+        If bytesLeft = 0 Then
+            If Not moreData Then
+                Return True
+            End If
+            s.Seek(Pointers.ReadPointer(s), IO.SeekOrigin.Begin)
+            GetBytesRemaining(s, bytesLeft, moreData)
+            Return ReadNext(s, result, bytesLeft, moreData)
+        End If
         bytesLeft -= 1
         result = s.ReadByte()
         Return False
     End Function
+
+    Private Shared Sub GetBytesRemaining(ByVal s As IO.Stream, ByRef bytesLeft As Integer, ByRef moreData As Boolean)
+        bytesLeft = s.ReadByte + s.ReadByte * &H100 'First 2 bytes are the compressed size
+        moreData = False
+        If (bytesLeft And &H8000) > 0 Then
+            moreData = True
+            bytesLeft = bytesLeft And &H7FFF
+        End If
+    End Sub
 
     Public Shared Function Compress(ByVal data As Byte()) As Byte()
         Dim result As New List(Of Byte)(data.Length \ 2) 'Making the default size be half that of the original data

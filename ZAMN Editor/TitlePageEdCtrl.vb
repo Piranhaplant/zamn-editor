@@ -7,7 +7,7 @@ Public Class TitlePageEdCtrl
     Public gfx As TitleGFX
     Public selectedIndex As Integer = -1
     Public selectedWord As Word
-    Public selectedChar As Integer 'Advanced editing
+    Public selectedChar As Integer = -1 'Advanced editing
     Public inserting As Boolean 'Advanced editing
     Public dragging As Boolean = False
     Public dragXOff As Integer
@@ -49,6 +49,7 @@ Public Class TitlePageEdCtrl
     Public Sub SelectNone()
         selectedIndex = -1
         selectedWord = Nothing
+        selectedChar = -1
         canvas.Invalidate()
     End Sub
 
@@ -81,6 +82,38 @@ Public Class TitlePageEdCtrl
     Public Sub AlignMiddle()
         selectedWord.y = 11
         wordRects(selectedIndex) = GetWordRect(selectedWord)
+        canvas.Invalidate()
+    End Sub
+
+    Public Sub MoveUp()
+        If selectedIndex < tp.words.Count - 1 Then
+            tp.words.Remove(selectedWord)
+            tp.words.Insert(selectedIndex + 1, selectedWord)
+            LoadAllWordRects()
+            canvas.Invalidate()
+        End If
+    End Sub
+
+    Public Sub MoveDown()
+        If selectedIndex > 0 Then
+            tp.words.Remove(selectedWord)
+            tp.words.Insert(selectedIndex - 1, selectedWord)
+            LoadAllWordRects()
+            canvas.Invalidate()
+        End If
+    End Sub
+
+    Public Sub MoveTop()
+        tp.words.Remove(selectedWord)
+        tp.words.Add(selectedWord)
+        LoadAllWordRects()
+        canvas.Invalidate()
+    End Sub
+
+    Public Sub MoveBottom()
+        tp.words.Remove(selectedWord)
+        tp.words.Insert(0, selectedWord)
+        LoadAllWordRects()
         canvas.Invalidate()
     End Sub
 

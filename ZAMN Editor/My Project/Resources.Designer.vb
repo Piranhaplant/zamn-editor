@@ -371,6 +371,46 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MoveBottom() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MoveBottom", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MoveDown() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MoveDown", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MoveTop() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MoveTop", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property MoveUp() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("MoveUp", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized resource of type System.Byte[].
         '''</summary>
         Friend ReadOnly Property Office() As Byte()

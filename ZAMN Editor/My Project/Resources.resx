@@ -118,148 +118,160 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Add.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Arrow.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="UnknownVictim" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UnknownVictim.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BlueFolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\BlueFolder.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Brush" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Brush.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Chainsaw" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Chainsaw.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Copy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Cut.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Delete.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dog" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Dog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DrTongue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\DrTongue.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FirstAidKit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\FirstAidKit.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Folder.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Grass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Suggest Lists\Grass.zsl;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ItemIndexes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ItemIndexes.bin;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ItemPalettes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ItemPalettes.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="LevelTxt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LevelTxt.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="lightbulb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\lightbulb.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MagnifyingGlass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\MagnifyingGlass.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Paste.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PencilSelect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\PencilSelect.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Save.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Selection" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Selection.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TileSelect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\TileSelect.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UnknownItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UnknownItem.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UnknownVictim" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UnknownVictim.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="VictimGFX" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\VictimGFX.bin;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="X" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\X.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="X2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\X2.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="X3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\X3.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Zombie" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Zombie.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Redo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Redo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="DropArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\DropArrow.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mall" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Suggest Lists\Mall.zsl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="ErrorImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Refresh.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Align_center" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Align_center.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Align_middle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Align_middle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="GrassProb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Suggest Lists\GrassR.zsl.prob;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="GrassR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Suggest Lists\GrassR.zsl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Arrow.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BSNES" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Save States\BSNES.bst;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Clear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Clear2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icons\Clear2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Circle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Caret" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Caret.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Pyramid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Suggest Lists\Pyramid.zsl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Office" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Suggest Lists\Office.zsl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Castle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Suggest Lists\Castle.zsl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Office" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Suggest Lists\Office.zsl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Refresh.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Circle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Circle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Folder.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Undo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Undo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Copy.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="X" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\X.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VictimGFX" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VictimGFX.bin;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FirstAidKit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\FirstAidKit.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\MoveUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Grass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Suggest Lists\Grass.zsl;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Chainsaw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Chainsaw.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BSNES" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Save States\BSNES.bst;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Selection" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Selection.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Align_center" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Align_center.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\MoveTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Suggest Lists\Mall.zsl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PencilSelect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\PencilSelect.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="X3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\X3.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Paste.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Cut.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DropArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DropArrow.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LevelTxt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LevelTxt.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Dog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Dog.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ErrorImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Align_middle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Align_middle.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Delete.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Add.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Clear2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Clear2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Zombie" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Zombie.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GrassR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Suggest Lists\GrassR.zsl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ItemIndexes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ItemIndexes.bin;System.Byte[], mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MagnifyingGlass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\MagnifyingGlass.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Save.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UnknownItem" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\UnknownItem.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TileSelect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\TileSelect.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ItemPalettes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ItemPalettes.bin;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DrTongue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\DrTongue.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Pyramid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Suggest Lists\Pyramid.zsl;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Clear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Clear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Caret" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Caret.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Brush" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\Brush.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="X2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\X2.PNG;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\MoveDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MoveBottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icons\MoveBottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

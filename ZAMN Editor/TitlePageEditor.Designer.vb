@@ -25,12 +25,6 @@ Partial Class TitlePageEditor
         Me.lblEnterText = New System.Windows.Forms.Label()
         Me.txtWord = New System.Windows.Forms.TextBox()
         Me.chkRand = New System.Windows.Forms.CheckBox()
-        Me.btnAlignMiddle = New System.Windows.Forms.Button()
-        Me.btnAlignCenter = New System.Windows.Forms.Button()
-        Me.btnAdd2 = New System.Windows.Forms.Button()
-        Me.btnAdd1 = New System.Windows.Forms.Button()
-        Me.btnDelete = New System.Windows.Forms.Button()
-        Me.btnRefresh = New System.Windows.Forms.Button()
         Me.nudPlt = New System.Windows.Forms.NumericUpDown()
         Me.lblPalette = New System.Windows.Forms.Label()
         Me.chkPltAll = New System.Windows.Forms.CheckBox()
@@ -42,6 +36,16 @@ Partial Class TitlePageEditor
         Me.FontSelector = New ZAMNEditor.TitleFontSelector()
         Me.TitlePageEdCtrl2 = New ZAMNEditor.TitlePageEdCtrl()
         Me.TitlePageEdCtrl1 = New ZAMNEditor.TitlePageEdCtrl()
+        Me.btnMoveBottom = New System.Windows.Forms.Button()
+        Me.btnMoveTop = New System.Windows.Forms.Button()
+        Me.btnMoveDown = New System.Windows.Forms.Button()
+        Me.btnMoveUp = New System.Windows.Forms.Button()
+        Me.btnAlignMiddle = New System.Windows.Forms.Button()
+        Me.btnAlignCenter = New System.Windows.Forms.Button()
+        Me.btnAdd2 = New System.Windows.Forms.Button()
+        Me.btnAdd1 = New System.Windows.Forms.Button()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnRefresh = New System.Windows.Forms.Button()
         CType(Me.nudPlt, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -74,79 +78,6 @@ Partial Class TitlePageEditor
         Me.chkRand.TabIndex = 4
         Me.chkRand.Text = "Randomize characters"
         Me.chkRand.UseVisualStyleBackColor = True
-        '
-        'btnAlignMiddle
-        '
-        Me.btnAlignMiddle.Enabled = False
-        Me.btnAlignMiddle.Image = Global.ZAMNEditor.My.Resources.Resources.Align_middle
-        Me.btnAlignMiddle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAlignMiddle.Location = New System.Drawing.Point(184, 305)
-        Me.btnAlignMiddle.Name = "btnAlignMiddle"
-        Me.btnAlignMiddle.Size = New System.Drawing.Size(118, 24)
-        Me.btnAlignMiddle.TabIndex = 10
-        Me.btnAlignMiddle.Text = "Center Vertically  "
-        Me.btnAlignMiddle.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAlignMiddle.UseVisualStyleBackColor = True
-        '
-        'btnAlignCenter
-        '
-        Me.btnAlignCenter.Enabled = False
-        Me.btnAlignCenter.Image = Global.ZAMNEditor.My.Resources.Resources.Align_center
-        Me.btnAlignCenter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAlignCenter.Location = New System.Drawing.Point(184, 275)
-        Me.btnAlignCenter.Name = "btnAlignCenter"
-        Me.btnAlignCenter.Size = New System.Drawing.Size(118, 24)
-        Me.btnAlignCenter.TabIndex = 9
-        Me.btnAlignCenter.Text = "Center Horizontally"
-        Me.btnAlignCenter.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAlignCenter.UseVisualStyleBackColor = True
-        '
-        'btnAdd2
-        '
-        Me.btnAdd2.Image = Global.ZAMNEditor.My.Resources.Resources.Add
-        Me.btnAdd2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAdd2.Location = New System.Drawing.Point(450, 242)
-        Me.btnAdd2.Name = "btnAdd2"
-        Me.btnAdd2.Size = New System.Drawing.Size(80, 23)
-        Me.btnAdd2.TabIndex = 8
-        Me.btnAdd2.Text = "Add Word"
-        Me.btnAdd2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAdd2.UseVisualStyleBackColor = True
-        '
-        'btnAdd1
-        '
-        Me.btnAdd1.Image = Global.ZAMNEditor.My.Resources.Resources.Add
-        Me.btnAdd1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAdd1.Location = New System.Drawing.Point(12, 242)
-        Me.btnAdd1.Name = "btnAdd1"
-        Me.btnAdd1.Size = New System.Drawing.Size(80, 23)
-        Me.btnAdd1.TabIndex = 7
-        Me.btnAdd1.Text = "Add Word"
-        Me.btnAdd1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAdd1.UseVisualStyleBackColor = True
-        '
-        'btnDelete
-        '
-        Me.btnDelete.Enabled = False
-        Me.btnDelete.Image = Global.ZAMNEditor.My.Resources.Resources.Delete
-        Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDelete.Location = New System.Drawing.Point(225, 242)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(93, 23)
-        Me.btnDelete.TabIndex = 6
-        Me.btnDelete.Text = "Delete Word"
-        Me.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnDelete.UseVisualStyleBackColor = True
-        '
-        'btnRefresh
-        '
-        Me.btnRefresh.Enabled = False
-        Me.btnRefresh.Image = Global.ZAMNEditor.My.Resources.Resources.Refresh
-        Me.btnRefresh.Location = New System.Drawing.Point(154, 309)
-        Me.btnRefresh.Name = "btnRefresh"
-        Me.btnRefresh.Size = New System.Drawing.Size(24, 24)
-        Me.btnRefresh.TabIndex = 5
-        Me.btnRefresh.UseVisualStyleBackColor = True
         '
         'nudPlt
         '
@@ -240,6 +171,7 @@ Partial Class TitlePageEditor
         '
         'TitlePageEdCtrl2
         '
+        Me.TitlePageEdCtrl2.AdvancedEditing = False
         Me.TitlePageEdCtrl2.Location = New System.Drawing.Point(274, 12)
         Me.TitlePageEdCtrl2.Name = "TitlePageEdCtrl2"
         Me.TitlePageEdCtrl2.ShowBorder = True
@@ -248,11 +180,125 @@ Partial Class TitlePageEditor
         '
         'TitlePageEdCtrl1
         '
+        Me.TitlePageEdCtrl1.AdvancedEditing = False
         Me.TitlePageEdCtrl1.Location = New System.Drawing.Point(12, 12)
         Me.TitlePageEdCtrl1.Name = "TitlePageEdCtrl1"
         Me.TitlePageEdCtrl1.ShowBorder = True
         Me.TitlePageEdCtrl1.Size = New System.Drawing.Size(256, 224)
         Me.TitlePageEdCtrl1.TabIndex = 0
+        '
+        'btnMoveBottom
+        '
+        Me.btnMoveBottom.Enabled = False
+        Me.btnMoveBottom.Image = Global.ZAMNEditor.My.Resources.Resources.MoveBottom
+        Me.btnMoveBottom.Location = New System.Drawing.Point(304, 338)
+        Me.btnMoveBottom.Name = "btnMoveBottom"
+        Me.btnMoveBottom.Size = New System.Drawing.Size(24, 24)
+        Me.btnMoveBottom.TabIndex = 23
+        Me.btnMoveBottom.UseVisualStyleBackColor = True
+        '
+        'btnMoveTop
+        '
+        Me.btnMoveTop.Enabled = False
+        Me.btnMoveTop.Image = Global.ZAMNEditor.My.Resources.Resources.MoveTop
+        Me.btnMoveTop.Location = New System.Drawing.Point(274, 338)
+        Me.btnMoveTop.Name = "btnMoveTop"
+        Me.btnMoveTop.Size = New System.Drawing.Size(24, 24)
+        Me.btnMoveTop.TabIndex = 22
+        Me.btnMoveTop.UseVisualStyleBackColor = True
+        '
+        'btnMoveDown
+        '
+        Me.btnMoveDown.Enabled = False
+        Me.btnMoveDown.Image = Global.ZAMNEditor.My.Resources.Resources.MoveDown
+        Me.btnMoveDown.Location = New System.Drawing.Point(244, 338)
+        Me.btnMoveDown.Name = "btnMoveDown"
+        Me.btnMoveDown.Size = New System.Drawing.Size(24, 24)
+        Me.btnMoveDown.TabIndex = 21
+        Me.btnMoveDown.UseVisualStyleBackColor = True
+        '
+        'btnMoveUp
+        '
+        Me.btnMoveUp.Enabled = False
+        Me.btnMoveUp.Image = Global.ZAMNEditor.My.Resources.Resources.MoveUp
+        Me.btnMoveUp.Location = New System.Drawing.Point(214, 338)
+        Me.btnMoveUp.Name = "btnMoveUp"
+        Me.btnMoveUp.Size = New System.Drawing.Size(24, 24)
+        Me.btnMoveUp.TabIndex = 20
+        Me.btnMoveUp.UseVisualStyleBackColor = True
+        '
+        'btnAlignMiddle
+        '
+        Me.btnAlignMiddle.Enabled = False
+        Me.btnAlignMiddle.Image = Global.ZAMNEditor.My.Resources.Resources.Align_middle
+        Me.btnAlignMiddle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAlignMiddle.Location = New System.Drawing.Point(184, 305)
+        Me.btnAlignMiddle.Name = "btnAlignMiddle"
+        Me.btnAlignMiddle.Size = New System.Drawing.Size(118, 24)
+        Me.btnAlignMiddle.TabIndex = 10
+        Me.btnAlignMiddle.Text = "Center Vertically  "
+        Me.btnAlignMiddle.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAlignMiddle.UseVisualStyleBackColor = True
+        '
+        'btnAlignCenter
+        '
+        Me.btnAlignCenter.Enabled = False
+        Me.btnAlignCenter.Image = Global.ZAMNEditor.My.Resources.Resources.Align_center
+        Me.btnAlignCenter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAlignCenter.Location = New System.Drawing.Point(184, 275)
+        Me.btnAlignCenter.Name = "btnAlignCenter"
+        Me.btnAlignCenter.Size = New System.Drawing.Size(118, 24)
+        Me.btnAlignCenter.TabIndex = 9
+        Me.btnAlignCenter.Text = "Center Horizontally"
+        Me.btnAlignCenter.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAlignCenter.UseVisualStyleBackColor = True
+        '
+        'btnAdd2
+        '
+        Me.btnAdd2.Image = Global.ZAMNEditor.My.Resources.Resources.Add
+        Me.btnAdd2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAdd2.Location = New System.Drawing.Point(450, 242)
+        Me.btnAdd2.Name = "btnAdd2"
+        Me.btnAdd2.Size = New System.Drawing.Size(80, 23)
+        Me.btnAdd2.TabIndex = 8
+        Me.btnAdd2.Text = "Add Word"
+        Me.btnAdd2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAdd2.UseVisualStyleBackColor = True
+        '
+        'btnAdd1
+        '
+        Me.btnAdd1.Image = Global.ZAMNEditor.My.Resources.Resources.Add
+        Me.btnAdd1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAdd1.Location = New System.Drawing.Point(12, 242)
+        Me.btnAdd1.Name = "btnAdd1"
+        Me.btnAdd1.Size = New System.Drawing.Size(80, 23)
+        Me.btnAdd1.TabIndex = 7
+        Me.btnAdd1.Text = "Add Word"
+        Me.btnAdd1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAdd1.UseVisualStyleBackColor = True
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Enabled = False
+        Me.btnDelete.Image = Global.ZAMNEditor.My.Resources.Resources.Delete
+        Me.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnDelete.Location = New System.Drawing.Point(225, 242)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(93, 23)
+        Me.btnDelete.TabIndex = 6
+        Me.btnDelete.Text = "Delete Word"
+        Me.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
+        'btnRefresh
+        '
+        Me.btnRefresh.Enabled = False
+        Me.btnRefresh.Image = Global.ZAMNEditor.My.Resources.Resources.Refresh
+        Me.btnRefresh.Location = New System.Drawing.Point(154, 309)
+        Me.btnRefresh.Name = "btnRefresh"
+        Me.btnRefresh.Size = New System.Drawing.Size(24, 24)
+        Me.btnRefresh.TabIndex = 5
+        Me.btnRefresh.UseVisualStyleBackColor = True
         '
         'TitlePageEditor
         '
@@ -260,6 +306,10 @@ Partial Class TitlePageEditor
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnCancel
         Me.ClientSize = New System.Drawing.Size(1108, 368)
+        Me.Controls.Add(Me.btnMoveBottom)
+        Me.Controls.Add(Me.btnMoveTop)
+        Me.Controls.Add(Me.btnMoveDown)
+        Me.Controls.Add(Me.btnMoveUp)
         Me.Controls.Add(Me.chkAdvancedEditing)
         Me.Controls.Add(Me.chkShowBorders)
         Me.Controls.Add(Me.FontSelector)
@@ -310,4 +360,8 @@ Partial Class TitlePageEditor
     Friend WithEvents FontSelector As ZAMNEditor.TitleFontSelector
     Friend WithEvents chkShowBorders As System.Windows.Forms.CheckBox
     Friend WithEvents chkAdvancedEditing As System.Windows.Forms.CheckBox
+    Friend WithEvents btnMoveUp As System.Windows.Forms.Button
+    Friend WithEvents btnMoveDown As System.Windows.Forms.Button
+    Friend WithEvents btnMoveTop As System.Windows.Forms.Button
+    Friend WithEvents btnMoveBottom As System.Windows.Forms.Button
 End Class

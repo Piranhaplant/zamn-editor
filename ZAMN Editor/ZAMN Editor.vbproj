@@ -495,6 +495,10 @@
     <None Include="Resources\Icons\Clear2.png" />
     <None Include="Resources\Circle.PNG" />
     <None Include="Resources\Caret.PNG" />
+    <None Include="Resources\Icons\MoveUp.png" />
+    <None Include="Resources\Icons\MoveDown.png" />
+    <None Include="Resources\Icons\MoveTop.png" />
+    <None Include="Resources\Icons\MoveBottom.png" />
     <Content Include="Secret.ICO" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

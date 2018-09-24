@@ -11,8 +11,8 @@ Public Class TitleGFX
         plt = SNESGFX.ReadPalette(fs, &H80, False)
         fs.Seek(Pointers.TitleGraphics, IO.SeekOrigin.Begin)
         Dim GFX As Byte() = ZAMNCompress.Decompress(fs)
-        Dim LinGFX(511)(,) As Byte
-        For l As Integer = 0 To &H1E8 'It used to go up to 511, but I think only 0x1E8 tiles actually exist
+        Dim LinGFX(GFX.Length \ &H20 - 1)(,) As Byte
+        For l As Integer = 0 To LinGFX.Length - 1
             LinGFX(l) = SNESGFX.PlanarToLinear(GFX, l * &H20)
         Next
         Dim tilePos(&H5E) As Point

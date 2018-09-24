@@ -28,28 +28,9 @@
         Next
     End Sub
 
-    Public Sub Sort()
-        Dim newlist As New List(Of Word)
-        Do Until words.Count = 0
-            Dim minValue As Integer = Integer.MaxValue
-            Dim minWord As Word
-            For Each w As Word In words
-                If w.y * &H100 + w.x < minValue Then
-                    minValue = w.y * &H100 + w.x
-                    minWord = w
-                End If
-            Next
-            If minWord.chars.Count > 0 Then
-                newlist.Add(minWord)
-            End If
-            words.Remove(minWord)
-        Loop
-        words = newlist
-    End Sub
-
     Public Overrides Function ToString() As String
         Dim str As String = ""
-        For Each w As Word In words
+        For Each w As Word In words.OrderBy(Function(x) x)
             str &= w.ToString & " "
         Next
         Return str.Trim()
@@ -111,6 +92,7 @@
 End Class
 
 Public Class Word
+    Implements IComparable(Of Word)
 
     Public x As Byte
     Public y As Byte
@@ -165,5 +147,13 @@ Public Class Word
             End If
         Next
         Return str
+    End Function
+
+    Public Function CompareTo(other As Word) As Integer Implements System.IComparable(Of Word).CompareTo
+        Dim value As Integer = y.CompareTo(other.y)
+        If value = 0 Then
+            value = x.CompareTo(other.x)
+        End If
+        Return value
     End Function
 End Class
