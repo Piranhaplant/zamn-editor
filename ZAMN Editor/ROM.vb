@@ -102,15 +102,21 @@ Public Class ROM
     Public Shared Sub RemoveHeader(ByVal s As IO.Stream)
         Dim extraBytes As Integer = s.Length Mod &H8000L
         s.Seek(0, IO.SeekOrigin.Begin)
-        InsertBytes(s, -extraBytes)
+        InsertBytes(s, -extraBytes, False)
         s.SetLength(s.Length - extraBytes)
     End Sub
 
-    Public Shared Sub InsertBytes(ByVal s As IO.Stream, ByVal byteCount As Integer)
+    Public Shared Sub InsertBytes(ByVal s As IO.Stream, ByVal byteCount As Integer, ByVal oneBankOnly As Boolean)
         If byteCount < 0 Then
             s.Seek(-byteCount, IO.SeekOrigin.Current)
         End If
-        Dim rest(s.Length - s.Position - 1) As Byte
+        Dim endPosition As Integer
+        If oneBankOnly Then
+            endPosition = (s.Position \ &H8000L + 1) * &H8000L - byteCount
+        Else
+            endPosition = s.Length
+        End If
+        Dim rest(endPosition - s.Position - 1) As Byte
         Dim start As Long = s.Position
         s.Read(rest, 0, rest.Length)
         s.Seek(start + byteCount, IO.SeekOrigin.Begin)
@@ -257,7 +263,7 @@ Public Class ROM
         Dim lenDiff As Integer = 0
         If ptrs.L2.LastIndexOf(lvlPtr) < ptrs.L2.Count - 1 Then
             lenDiff = data.data.Length - (ptrs.L2(ptrs.L2.LastIndexOf(lvlPtr) + 1) - lvlPtr)
-            InsertBytes(fs, lenDiff)
+            InsertBytes(fs, lenDiff, True)
         End If
         fs.Seek(lvlPtr, SeekOrigin.Begin)
         fs.Write(data.data, 0, data.data.Length)
@@ -266,15 +272,15 @@ Public Class ROM
         Dim bossIndex As Integer = 0
         Do 'set pointers for special boss monsters
             tempptr = Pointers.ReadPointer(fs)
-                If Pointers.SpBossMonsters.Contains(tempptr) And bossIndex < data.bossDataPtr.Count Then
-                    fs.Write(Pointers.ToArray(data.bossDataPtr(bossIndex) + lvlPtr), 0, 4)
-                    bossIndex += 1
-                ElseIf tempptr = -1 Then
-                    Exit Do
-                Else
-                    fs.Seek(4, SeekOrigin.Current)
-                End If
-            Loop
+            If Pointers.SpBossMonsters.Contains(tempptr) And bossIndex < data.bossDataPtr.Count Then
+                fs.Write(Pointers.ToArray(data.bossDataPtr(bossIndex) + lvlPtr), 0, 4)
+                bossIndex += 1
+            ElseIf tempptr = -1 Then
+                Exit Do
+            Else
+                fs.Seek(4, SeekOrigin.Current)
+            End If
+        Loop
         'Hacky way to make sure the tile animations don't get messed up
         fs.Seek(lvlPtr, SeekOrigin.Begin)
         FixTileAnim(fs)
