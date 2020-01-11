@@ -22,8 +22,8 @@
         EditingTools = New Tool() {New PaintbrushTool(Me), New TileSuggestTool(Me), New RectangleSelectTool(Me), New PencilSelectTool(Me), _
                                    New TileSelectTool(Me), New ItemTool(Me), New VictimTool(Me), New NRMonsterTool(Me), New MonsterTool(Me), New BossMonsterTool(Me),
                                    New SpriteTool(Me)}
-        LevelItems = New ToolStripItem() {FileSave, SaveTool, EditPaste, PasteTool, EditSelectAll, EditSelectNone, ViewGrid, ViewNextFrame, ViewRestartAnimation, _
-                                          ViewPriority, ViewRespawnAreas, LevelExport, LevelImport, LevelCopy, LevelPaste, LevelEditTitle, LevelSettingsM, LevelSaveAsPNG}
+        LevelItems = New ToolStripItem() {FileSave, SaveTool, EditPaste, PasteTool, EditSelectAll, EditSelectNone, ViewGrid, ViewNextFrame, ViewRestartAnimation,
+                                          ViewPriority, ViewRespawnAreas, ViewScreenSizeGuide, LevelExport, LevelImport, LevelCopy, LevelPaste, LevelEditTitle, LevelSettingsM, LevelSaveAsPNG}
         TilePaste = New PasteTilesTool(Me)
         TileSuggestList.LoadAll()
         If My.Settings.RecentROMs <> "" Then
@@ -254,6 +254,10 @@
         UpdateEdControl()
     End Sub
 
+    Private Sub ViewScreenSizeGuide_Click(sender As Object, e As EventArgs) Handles ViewScreenSizeGuide.Click
+        UpdateEdControl()
+    End Sub
+
     Private Sub ViewAnimate_Click(sender As System.Object, e As System.EventArgs) Handles ViewAnimate.Click
         My.Settings.Animate = ViewAnimate.Checked
         If EdControl IsNot Nothing Then
@@ -447,6 +451,7 @@
         EdControl.Grid = ViewGrid.Checked
         EdControl.priority = ViewPriority.Checked
         EdControl.showRespawn = ViewRespawnAreas.Checked
+        EdControl.showScreenSizeGuide = ViewScreenSizeGuide.Checked
         EdControl.zoom = zoomLevel
         EdControl.UpdateScrollBars()
         EdControl.Focus()

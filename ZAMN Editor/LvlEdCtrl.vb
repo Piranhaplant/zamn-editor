@@ -1,4 +1,7 @@
 ﻿Public Class LvlEdCtrl
+    Public Const screenWidth As Integer = 256
+    Public Const screenHeight As Integer = 224
+
     Public lvl As Level
     Public t As Tool
     Public TilePicker As TilesetBrowser
@@ -12,9 +15,11 @@
     Public Grid As Boolean
     Public priority As Boolean
     Public showRespawn As Boolean
+    Public showScreenSizeGuide As Boolean
     Public selection As Selection
     Public UndoMgr As UndoManager
     Public Active As Boolean
+    Public mouseOver As Boolean = False
 
     Public fillBrush As SolidBrush
     Public eraserBrush As SolidBrush
@@ -209,6 +214,14 @@
                 g.DrawRectangle(Pens.White, eraserRect)
                 g.DrawRectangle(borderPen, eraserRect)
             End If
+            If showScreenSizeGuide And mouseOver Then
+                Dim mousePos As Point = canvas.PointToClient(MousePosition)
+                Dim centerX As Integer = (mousePos.X + HScrl.Value) / zoom
+                Dim centerY As Integer = (mousePos.Y + VScrl.Value) / zoom
+                g.DrawRectangle(Pens.Snow, centerX - screenWidth \ 2, centerY - screenHeight \ 2, screenWidth, screenHeight)
+                g.DrawLine(Pens.Snow, centerX, centerY - screenHeight \ 2, centerX, centerY + screenHeight \ 2)
+                g.DrawLine(Pens.Snow, centerX - screenWidth \ 2, centerY, centerX + screenWidth \ 2, centerY)
+            End If
             If t IsNot Nothing Then
                 t.Paint(g)
             End If
@@ -268,6 +281,9 @@
     End Sub
 
     Private Sub canvas_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles canvas.MouseMove
+        If showScreenSizeGuide Then
+            Repaint()
+        End If
         If e.Button = Windows.Forms.MouseButtons.Middle Then
             HScrl.Value = Math.Max(0, Math.Min(HScrl.Maximum - HScrl.LargeChange, dragViewX - e.X))
             VScrl.Value = Math.Max(0, Math.Min(VScrl.Maximum - VScrl.LargeChange, dragViewY - e.Y))
@@ -278,6 +294,17 @@
             UpdateDrag()
         End If
         forceMove = False
+    End Sub
+
+    Private Sub canvas_MouseEnter(sender As Object, e As EventArgs) Handles canvas.MouseEnter
+        mouseOver = True
+    End Sub
+
+    Private Sub canvas_MouseLeave(sender As Object, e As EventArgs) Handles canvas.MouseLeave
+        mouseOver = False
+        If showScreenSizeGuide Then
+            Repaint()
+        End If
     End Sub
 
     Private ArrowKeys As Keys() = {Keys.Up, Keys.Right, Keys.Down, Keys.Left}
