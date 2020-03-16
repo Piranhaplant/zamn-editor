@@ -87,8 +87,9 @@ Public Class TitlePageEdCtrl
 
     Public Sub MoveUp()
         If selectedIndex < tp.words.Count - 1 Then
+            selectedIndex += 1
             tp.words.Remove(selectedWord)
-            tp.words.Insert(selectedIndex + 1, selectedWord)
+            tp.words.Insert(selectedIndex, selectedWord)
             LoadAllWordRects()
             canvas.Invalidate()
         End If
@@ -96,14 +97,16 @@ Public Class TitlePageEdCtrl
 
     Public Sub MoveDown()
         If selectedIndex > 0 Then
+            selectedIndex -= 1
             tp.words.Remove(selectedWord)
-            tp.words.Insert(selectedIndex - 1, selectedWord)
+            tp.words.Insert(selectedIndex, selectedWord)
             LoadAllWordRects()
             canvas.Invalidate()
         End If
     End Sub
 
     Public Sub MoveTop()
+        selectedIndex = tp.words.Count - 1
         tp.words.Remove(selectedWord)
         tp.words.Add(selectedWord)
         LoadAllWordRects()
@@ -111,6 +114,7 @@ Public Class TitlePageEdCtrl
     End Sub
 
     Public Sub MoveBottom()
+        selectedIndex = 0
         tp.words.Remove(selectedWord)
         tp.words.Insert(0, selectedWord)
         LoadAllWordRects()
