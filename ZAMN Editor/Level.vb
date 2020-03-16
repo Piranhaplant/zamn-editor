@@ -207,7 +207,7 @@
         End If
         s.Close()
 
-        UpdateTileAnimation()
+        LoadTileAnimation()
     End Sub
 
     Public Function GetWriteData() As LevelWriteData
@@ -223,15 +223,15 @@
         file.AddRange(Pointers.ToArray(tileset.paletteAddr))
         file.AddRange(Pointers.ToArray(spritePal))
         file.AddRange(Pointers.ToArray(tileset.pltAnimAddr))
-        file.AddRange(New Byte() {0, 0, 0, 0, 0, 0, _
-                                  Width Mod &H100, Width \ &H100, _
-                                  Height Mod &H100, Height \ &H100, _
-                                  unknown Mod &H100, unknown \ &H100, _
-                                  unknown3 Mod &H100, unknown3 \ &H100, _
-                                  p1Start.X Mod &H100, p1Start.X \ &H100, p1Start.Y Mod &H100, p1Start.Y \ &H100, _
-                                  p2Start.X Mod &H100, p2Start.X \ &H100, p2Start.Y Mod &H100, p2Start.Y \ &H100, _
-                                  music Mod &H100, music \ &H100, _
-                                  sounds Mod &H100, sounds \ &H100, _
+        file.AddRange(New Byte() {0, 0, 0, 0, 0, 0,
+                                  Width Mod &H100, Width \ &H100,
+                                  Height Mod &H100, Height \ &H100,
+                                  unknown Mod &H100, unknown \ &H100,
+                                  unknown3 Mod &H100, unknown3 \ &H100,
+                                  p1Start.X Mod &H100, p1Start.X \ &H100, p1Start.Y Mod &H100, p1Start.Y \ &H100,
+                                  p2Start.X Mod &H100, p2Start.X \ &H100, p2Start.Y Mod &H100, p2Start.Y \ &H100,
+                                  music Mod &H100, music \ &H100,
+                                  sounds Mod &H100, sounds \ &H100,
                                   0, 0, 0, 0, 0, 0})
         For Each m As BossMonster In objects.BossMonsters
             file.AddRange(Pointers.ToArray(m.ptr))
@@ -261,7 +261,7 @@
                 x = v.X + Pointers.SpriteOffsets(v.index * 2)
                 y = v.Y + Pointers.SpriteOffsets(v.index * 2 + 1)
                 Dim num As UShort = IIf(v.num = 10, 16, v.num)
-                file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, v.unused Mod &H100, v.unused \ &H100, _
+                file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, v.unused Mod &H100, v.unused \ &H100,
                                           num Mod &H100, num \ &H100})
                 file.AddRange(Pointers.ToArray(v.ptr))
             End If
@@ -270,7 +270,7 @@
         For Each m As NRMonster In objects.NRMonsters
             x = m.X + Pointers.SpriteOffsets(m.index * 2)
             y = m.Y + Pointers.SpriteOffsets(m.index * 2 + 1)
-            file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, m.extra Mod &H100, m.extra \ &H100, _
+            file.AddRange(New Byte() {x Mod &H100, x \ &H100, y Mod &H100, y \ &H100, m.extra Mod &H100, m.extra \ &H100,
                                       m.unused Mod &H100, m.unused \ &H100})
             file.AddRange(Pointers.ToArray(m.ptr))
         Next
@@ -339,11 +339,15 @@
         Return fs.array
     End Function
 
-    Public Sub UpdateTileAnimation()
+    Public Sub ClearTileAnimation()
         If animation IsNot Nothing Then
             animation.Reset()
             animation = Nothing
         End If
+    End Sub
+
+    Public Sub LoadTileAnimation()
+        animation = Nothing
         For Each boss As BossMonster In objects.BossMonsters
             If boss.Type = ZAMNEditor.Pointers.SpBossMonsters(1) Then
                 animation = New TileAnimation(tileset, boss)

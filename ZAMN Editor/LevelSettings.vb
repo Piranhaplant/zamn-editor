@@ -3,11 +3,13 @@
     Public lvl As Level
     Public ed As Editor
     Private tileAnim As Byte() = Nothing
+    Private tileAnimChanged As Boolean
 
     Public Overloads Function ShowDialog(ByVal ed As Editor) As DialogResult
         Me.lvl = ed.EdControl.lvl
         Me.ed = ed
         tileAnim = Nothing
+        tileAnimChanged = False
         'Tiles
         addrTiles.Value = lvl.tileset.address
         cboTiles.SelectedIndex = Array.IndexOf(Pointers.Tilesets, lvl.tileset.address)
@@ -103,6 +105,7 @@
             End If
         Next
         chkPltFade.Checked = False
+        cboTileAnim.SelectedIndex = -1
         For Each m As BossMonster In lvl.objects.BossMonsters
             'Palette fade
             If m.ptr = Pointers.SpBossMonsters(0) Then
@@ -284,14 +287,19 @@
         If tileAnim IsNot Nothing Then
             lvl.objects.BossMonsters.Add(New BossMonster(Pointers.SpBossMonsters(1), tileAnim))
         End If
-        lvl.UpdateTileAnimation()
 
-        If reloadTileset Then
-            Dim s As New IO.FileStream(ed.r.path, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.Read)
-            lvl.tileset.Reload(s)
-            ed.EdControl.TilePicker.LoadTileset(ed.EdControl.lvl.tileset)
-            s.Close()
+        If reloadTileset Or tileAnimChanged Then
+            lvl.ClearTileAnimation()
+            If reloadTileset Then
+                Dim s As New IO.FileStream(ed.r.path, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.Read)
+                lvl.tileset.Reload(s)
+                ed.EdControl.TilePicker.LoadTileset(ed.EdControl.lvl.tileset)
+                s.Close()
+            End If
+            lvl.LoadTileAnimation()
+            ed.EdControl.TilePicker.Invalidate(True)
         End If
+
         If reloadSprites Then
             Dim s As New IO.FileStream(ed.r.path, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.Read)
             lvl.GFX.Reload(s, lvl.spritePal)
@@ -326,6 +334,7 @@
         btnDeleteTileAnim.Enabled = False
         btnExportTileAnim.Enabled = False
         tileAnim = Nothing
+        tileAnimChanged = True
     End Sub
 
     Private Sub btnExportTileAnim_Click(sender As System.Object, e As System.EventArgs) Handles btnExportTileAnim.Click
@@ -394,6 +403,7 @@
         tileAnim(count * 2) = 0
         tileAnim(count * 2 + 1) = 0
         Array.Copy(data, 0, tileAnim, count * 2 + 2, data.Length)
+        tileAnimChanged = True
 
         btnDeleteTileAnim.Enabled = True
         btnExportTileAnim.Enabled = True
