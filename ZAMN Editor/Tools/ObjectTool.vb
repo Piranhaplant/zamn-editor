@@ -327,6 +327,7 @@
                 End If
             Next
         End If
+        ed.EdControl.UndoMgr.merge = False
         Return False
     End Function
 
