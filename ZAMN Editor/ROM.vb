@@ -32,7 +32,7 @@ Public Class ROM
         Dim curLvl As Integer = 0
         For l As Integer = 0 To maxLvlNum
             num = s.ReadByte() + s.ReadByte() * &H100
-            If num <> 0 Then
+            If num <> 0 And num > regLvlCount Then
                 bonusLvls.Add(num)
                 maxLvlNum = Math.Max(maxLvlNum, num)
             End If
