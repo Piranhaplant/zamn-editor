@@ -400,9 +400,9 @@
 
     Private Sub UpdateSmoothScroll()
         If scrollEnd > scrollTarget.Value Then
-            scrollTarget.Value = Math.Min(scrollEnd, scrollTarget.Value + scrollDelta)
+            scrollTarget.Value = Math.Max(0, Math.Min(scrollEnd, scrollTarget.Value + scrollDelta))
         Else
-            scrollTarget.Value = Math.Max(scrollEnd, scrollTarget.Value + scrollDelta)
+            scrollTarget.Value = Math.Min(scrollTarget.Maximum - scrollTarget.LargeChange + 1, Math.Max(scrollEnd, scrollTarget.Value + scrollDelta))
         End If
         If scrollTarget.Value = scrollEnd Then
             smoothScolling = False

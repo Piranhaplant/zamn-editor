@@ -335,7 +335,7 @@ Public Class ROM
         fs.SetLength(ROMSize)
         names(lvl.num) = GetLevelTitle(fs, lvlPtr)
         OpenLevel.SetName(lvl.num, names(lvl.num))
-#If Not Debug Then
+#If Not DEBUG Then
         Catch ex As Exception
             MsgBox("Error saving level." & Environment.NewLine & ex.Message, MsgBoxStyle.Critical, "Error")
             'Restore the backup
