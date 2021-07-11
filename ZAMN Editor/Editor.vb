@@ -23,7 +23,7 @@
                                    New TileSelectTool(Me), New ItemTool(Me), New VictimTool(Me), New NRMonsterTool(Me), New MonsterTool(Me), New BossMonsterTool(Me),
                                    New SpriteTool(Me)}
         LevelItems = New ToolStripItem() {FileSave, SaveTool, EditPaste, PasteTool, EditSelectAll, EditSelectNone, ViewGrid, ViewNextFrame, ViewRestartAnimation,
-                                          ViewPriority, ViewRespawnAreas, ViewScreenSizeGuide, LevelExport, LevelImport, LevelCopy, LevelPaste, LevelEditTitle, LevelSettingsM, LevelSaveAsPNG}
+                                          ViewPriority, ViewRespawnAreas, ViewScreenSizeGuide, LevelExport, LevelImport, LevelCopy, LevelPaste, LevelEditTitle, LevelSettingsM, LevelReloadTileset, LevelSaveAsPNG}
         TilePaste = New PasteTilesTool(Me)
         TileSuggestList.LoadAll()
         If My.Settings.RecentROMs <> "" Then
@@ -339,6 +339,17 @@
         LevelSettings.ShowDialog(Me)
     End Sub
 
+    Private Sub LevelReloadTileset_Click(sender As Object, e As EventArgs) Handles LevelReloadTileset.Click
+        EdControl.lvl.ClearTileAnimation()
+        Dim s As New IO.FileStream(r.path, IO.FileMode.Open, IO.FileAccess.Read, IO.FileShare.ReadWrite)
+        EdControl.lvl.tileset.Reload(s)
+        EdControl.TilePicker.LoadTileset(EdControl.lvl.tileset)
+        s.Close()
+        EdControl.lvl.LoadTileAnimation()
+        EdControl.TilePicker.Invalidate(True)
+        EdControl.Repaint()
+    End Sub
+
     Private Sub LevelSaveAsPNG_Click(sender As System.Object, e As System.EventArgs) Handles LevelSaveAsPNG.Click
         If SavePNG.ShowDialog() = Windows.Forms.DialogResult.OK Then
             Dim bitmap As New Bitmap(EdControl.lvl.Width * 64, EdControl.lvl.Height * 64)
@@ -363,12 +374,12 @@
     End Sub
 
     Private Sub HelpAbout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HelpAbout.Click
-        MsgBox("ZAMN Editor Beta v" & Application.ProductVersion & Environment.NewLine & Environment.NewLine & _
-               "Credits:" & Environment.NewLine & _
-               "Programming: Piranhaplant" & Environment.NewLine & _
-               "Tileset suggest lists: Droter" & Environment.NewLine & _
-               "Icons: Silk Icon set http://www.famfamfam.com/lab/icons/silk/" & Environment.NewLine & Environment.NewLine & _
-               "Copyright © 2017 Piranhaplant", MsgBoxStyle.Information, "About")
+        MsgBox("ZAMN Editor Beta v" & Application.ProductVersion & Environment.NewLine & Environment.NewLine &
+               "Credits:" & Environment.NewLine &
+               "Programming: Piranhaplant" & Environment.NewLine &
+               "Tileset suggest lists: Droter" & Environment.NewLine &
+               "Icons: Silk Icon set http://www.famfamfam.com/lab/icons/silk/" & Environment.NewLine & Environment.NewLine &
+               "Copyright © 2021 Piranhaplant", MsgBoxStyle.Information, "About")
     End Sub
 
     Private Sub Tools_ItemClicked(ByVal sender As Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles Tools.ItemClicked

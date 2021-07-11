@@ -53,6 +53,7 @@ Partial Class Editor
         Me.ViewGrid = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewPriority = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewRespawnAreas = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ViewScreenSizeGuide = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator12 = New System.Windows.Forms.ToolStripSeparator()
         Me.ViewAnimate = New System.Windows.Forms.ToolStripMenuItem()
         Me.ViewNextFrame = New System.Windows.Forms.ToolStripMenuItem()
@@ -122,7 +123,7 @@ Partial Class Editor
         Me.ExportLevel = New System.Windows.Forms.SaveFileDialog()
         Me.OpenEmulator = New System.Windows.Forms.OpenFileDialog()
         Me.SavePNG = New System.Windows.Forms.SaveFileDialog()
-        Me.ViewScreenSizeGuide = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LevelReloadTileset = New System.Windows.Forms.ToolStripMenuItem()
         Me.Tabs = New ZAMNEditor.Tabs()
         Me.RecentROMs = New ZAMNEditor.RecentFilesList()
         Me.TSContainer.ContentPanel.SuspendLayout()
@@ -390,6 +391,15 @@ Partial Class Editor
         Me.ViewRespawnAreas.Size = New System.Drawing.Size(208, 22)
         Me.ViewRespawnAreas.Text = "R&espawn Areas"
         '
+        'ViewScreenSizeGuide
+        '
+        Me.ViewScreenSizeGuide.CheckOnClick = True
+        Me.ViewScreenSizeGuide.Enabled = False
+        Me.ViewScreenSizeGuide.Name = "ViewScreenSizeGuide"
+        Me.ViewScreenSizeGuide.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
+        Me.ViewScreenSizeGuide.Size = New System.Drawing.Size(208, 22)
+        Me.ViewScreenSizeGuide.Text = "Screen Size G&uide"
+        '
         'ToolStripSeparator12
         '
         Me.ToolStripSeparator12.Name = "ToolStripSeparator12"
@@ -440,7 +450,7 @@ Partial Class Editor
         '
         'LevelMenu
         '
-        Me.LevelMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LevelExport, Me.LevelImport, Me.LevelCopy, Me.LevelPaste, Me.toolStripSeparator10, Me.LevelEditTitle, Me.LevelSettingsM, Me.ToolStripSeparator13, Me.LevelSaveAsPNG, Me.LevelDebugTools})
+        Me.LevelMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LevelExport, Me.LevelImport, Me.LevelCopy, Me.LevelPaste, Me.toolStripSeparator10, Me.LevelEditTitle, Me.LevelSettingsM, Me.ToolStripSeparator13, Me.LevelReloadTileset, Me.LevelSaveAsPNG, Me.LevelDebugTools})
         Me.LevelMenu.Name = "LevelMenu"
         Me.LevelMenu.Size = New System.Drawing.Size(46, 20)
         Me.LevelMenu.Text = "&Level"
@@ -449,66 +459,66 @@ Partial Class Editor
         '
         Me.LevelExport.Enabled = False
         Me.LevelExport.Name = "LevelExport"
-        Me.LevelExport.Size = New System.Drawing.Size(155, 22)
+        Me.LevelExport.Size = New System.Drawing.Size(186, 22)
         Me.LevelExport.Text = "&Export"
         '
         'LevelImport
         '
         Me.LevelImport.Enabled = False
         Me.LevelImport.Name = "LevelImport"
-        Me.LevelImport.Size = New System.Drawing.Size(155, 22)
+        Me.LevelImport.Size = New System.Drawing.Size(186, 22)
         Me.LevelImport.Text = "&Import"
         '
         'LevelCopy
         '
         Me.LevelCopy.Enabled = False
         Me.LevelCopy.Name = "LevelCopy"
-        Me.LevelCopy.Size = New System.Drawing.Size(155, 22)
+        Me.LevelCopy.Size = New System.Drawing.Size(186, 22)
         Me.LevelCopy.Text = "&Copy as Text"
         '
         'LevelPaste
         '
         Me.LevelPaste.Enabled = False
         Me.LevelPaste.Name = "LevelPaste"
-        Me.LevelPaste.Size = New System.Drawing.Size(155, 22)
+        Me.LevelPaste.Size = New System.Drawing.Size(186, 22)
         Me.LevelPaste.Text = "&Paste from Text"
         '
         'toolStripSeparator10
         '
         Me.toolStripSeparator10.Name = "toolStripSeparator10"
-        Me.toolStripSeparator10.Size = New System.Drawing.Size(152, 6)
+        Me.toolStripSeparator10.Size = New System.Drawing.Size(183, 6)
         '
         'LevelEditTitle
         '
         Me.LevelEditTitle.Enabled = False
         Me.LevelEditTitle.Name = "LevelEditTitle"
-        Me.LevelEditTitle.Size = New System.Drawing.Size(155, 22)
+        Me.LevelEditTitle.Size = New System.Drawing.Size(186, 22)
         Me.LevelEditTitle.Text = "Edit &Title..."
         '
         'LevelSettingsM
         '
         Me.LevelSettingsM.Enabled = False
         Me.LevelSettingsM.Name = "LevelSettingsM"
-        Me.LevelSettingsM.Size = New System.Drawing.Size(155, 22)
+        Me.LevelSettingsM.Size = New System.Drawing.Size(186, 22)
         Me.LevelSettingsM.Text = "&Settings..."
         '
         'ToolStripSeparator13
         '
         Me.ToolStripSeparator13.Name = "ToolStripSeparator13"
-        Me.ToolStripSeparator13.Size = New System.Drawing.Size(152, 6)
+        Me.ToolStripSeparator13.Size = New System.Drawing.Size(183, 6)
         '
         'LevelSaveAsPNG
         '
         Me.LevelSaveAsPNG.Enabled = False
         Me.LevelSaveAsPNG.Name = "LevelSaveAsPNG"
-        Me.LevelSaveAsPNG.Size = New System.Drawing.Size(155, 22)
+        Me.LevelSaveAsPNG.Size = New System.Drawing.Size(186, 22)
         Me.LevelSaveAsPNG.Text = "Save as PNG..."
         '
         'LevelDebugTools
         '
         Me.LevelDebugTools.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DebugCopyTileset, Me.DebugFillSelection, Me.DebugDecompress, Me.DebugCompress, Me.DebugFixTileAnim})
         Me.LevelDebugTools.Name = "LevelDebugTools"
-        Me.LevelDebugTools.Size = New System.Drawing.Size(155, 22)
+        Me.LevelDebugTools.Size = New System.Drawing.Size(186, 22)
         Me.LevelDebugTools.Text = "Debug Tools"
         Me.LevelDebugTools.Visible = False
         '
@@ -902,14 +912,13 @@ Partial Class Editor
         '
         Me.SavePNG.Filter = "PNG Images (*.png)|*.png|All Files (*.*)|*.*"
         '
-        'ViewScreenSizeGuide
+        'LevelReloadTileset
         '
-        Me.ViewScreenSizeGuide.CheckOnClick = True
-        Me.ViewScreenSizeGuide.Enabled = False
-        Me.ViewScreenSizeGuide.Name = "ViewScreenSizeGuide"
-        Me.ViewScreenSizeGuide.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.U), System.Windows.Forms.Keys)
-        Me.ViewScreenSizeGuide.Size = New System.Drawing.Size(208, 22)
-        Me.ViewScreenSizeGuide.Text = "Screen Size G&uide"
+        Me.LevelReloadTileset.Enabled = False
+        Me.LevelReloadTileset.Name = "LevelReloadTileset"
+        Me.LevelReloadTileset.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.T), System.Windows.Forms.Keys)
+        Me.LevelReloadTileset.Size = New System.Drawing.Size(186, 22)
+        Me.LevelReloadTileset.Text = "&Reload Tileset"
         '
         'Tabs
         '
@@ -1054,4 +1063,5 @@ Partial Class Editor
     Friend WithEvents SavePNG As System.Windows.Forms.SaveFileDialog
     Friend WithEvents ViewRespawnAreas As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ViewScreenSizeGuide As ToolStripMenuItem
+    Friend WithEvents LevelReloadTileset As ToolStripMenuItem
 End Class
